@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Special Person</title>
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --dark: #292f36;
+            --light: #FDFD96;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            display: none;
+            padding: 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            transition: all 0.5s ease-in-out;
+        }
+
+        section.active {
+            display: flex;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: colorShift 5s infinite alternate;
+        }
+
+        @keyframes colorShift {
+            0% { color: var(--primary); }
+            50% { color: var(--secondary); }
+            100% { color: var(--primary); }
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn:hover::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        .date-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .date-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .date-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .date-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .heart {
+            color: var(--primary);
+            font-size: 5rem;
+            margin: 2rem;
+            animation: pulse 1.5s infinite;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        .heart:hover {
+            animation: pulse 0.7s infinite;
+        }
+        
+        .heart::after {
+            content: 'Click me!';
+            position: absolute;
+            font-size: 1rem;
+            color: var(--dark);
+            width: 100px;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .heart:hover::after {
+            opacity: 1;
+        }
+        
+        .click-hint {
+            font-size: 1rem;
+            color: var(--dark);
+            opacity: 0.7;
+            animation: fadeInOut 2s infinite;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pulse-animation {
+            animation: buttonPulse 2s infinite;
+        }
+        
+        @keyframes buttonPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(255,107,107,0.4);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(255,107,107,0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(255,107,107,0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .proposal-text {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards 1s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-placeholder {
+            width: 300px;
+            height: 200px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.7s ease;
+        }
+
+        .photo-placeholder:hover::before {
+            left: 100%;
+        }
+
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .memory-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            max-width: 1200px;
+        }
+
+        .memory-item {
+            width: 250px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+            transition: all 0.3s ease;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .memory-detail-page {
+            padding: 3rem;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .memory-detail-page.active {
+            display: flex;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            width: 300px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            flex: 0 0 calc(33.333% - 2rem);
+            max-width: calc(33.333% - 2rem);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03) translateY(-5px);
+            z-index: 1;
+        }
+
+        .gallery-image {
+            width: 300px;
+            height: 200px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-caption {
+            font-size: 0.9rem;
+            color: var(--dark);
+            text-align: center;
+            font-style: italic;
+            padding: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn {
+            background-color: var(--dark);
+            margin-bottom: 2rem;
+        }
+
+        .memory-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .photo {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .romantic-video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .romantic-video:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger the animation for each memory item */
+        .memory-item:nth-child(1) { animation-delay: 0.1s; }
+        .memory-item:nth-child(2) { animation-delay: 0.3s; }
+        .memory-item:nth-child(3) { animation-delay: 0.5s; }
+        .memory-item:nth-child(4) { animation-delay: 0.7s; }
+        .memory-item:nth-child(5) { animation-delay: 0.9s; }
+        .memory-item:nth-child(6) { animation-delay: 1.1s; }
+
+        .hidden {
+            display: none;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            animation: fall linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .proposal-img {
+            max-width: 400px;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .response-btn {
+            font-size: 1.5rem;
+            padding: 1rem 3rem;
+            margin: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .response-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        #yes-btn {
+            background-color: var(--secondary);
+        }
+
+        /* Modal styles for image enlargement */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            animation: zoomIn 0.3s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+
+        /* Parallax effect for sections */
+        .parallax {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Floating hearts decoration */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: var(--primary);
+            opacity: 0.3;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Custom cursor for romantic feel */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 107, 107, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            display: none;
+        }
+
+        /* Audio player for background music */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .audio-control:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-icon {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Loading animation */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: all 0.5s ease;
+        }
+
+        .loading-heart {
+            font-size: 5rem;
+            color: var(--primary);
+            animation: loadingPulse 1s infinite;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .loading-heart::after {
+            content: 'Click to skip';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .loading-heart:hover::after {
+            opacity: 1;
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 20px;
+            animation: fadeInOut 2s infinite;
+        }
+        
+        /* Highlight effect for the heart */
+        .highlight-heart {
+            animation: highlightPulse 1s infinite !important;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            border-radius: 50%;
+        }
+        
+        @keyframes highlightPulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                transform: scale(1.2);
+                text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            }
+        }
+        
+        /* Speech bubble for heart */
+        .speech-bubble {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: white;
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: white transparent transparent;
+        }
+
+        @keyframes loadingPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* Navigation helper styles */
+        .navigation-helper {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .navigation-helper.show {
+            opacity: 1;
+        }
+        
+        .nav-hint {
+            font-size: 1rem;
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        /* Typing effect for landing page */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3.5s steps(40, end);
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* 3D effect for buttons */
+        .btn-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .btn-3d:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        /* Interactive love meter */
+        .love-meter {
+            width: 300px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .love-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            transition: width 2s ease-in-out;
+        }
+
+        .love-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--dark);
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            transition: color 0.5s ease;
+        }
+
+        .volume-control {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 99;
+}
+
+.volume-slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.volume-slider {
+    width: 100px;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    border-radius: 5px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.volume-level {
+    font-size: 0.8rem;
+    color: var(--dark);
+}
+
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 calc(50% - 1.5rem);
+                max-width: calc(50% - 1.5rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .proposal-text {
+                font-size: 2rem;
+            }
+            
+            .response-btn {
+                font-size: 1.2rem;
+                padding: 0.8rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Loading screen -->
+    <div class="loading-screen">
+        <div class="loading-heart">❤️</div>
+        <p class="loading-text">Loading our memories...</p>
+    </div>
+
+    <!-- Audio control -->
+    <div class="audio-control" onclick="toggleAudio()">
+        <div class="audio-icon">♪</div>
+    </div>
+    
+    <!-- Audio element -->
+    <audio id="background-music" loop>
+        <source src="Ruth B. - Dandelions (Lyrics).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Image modal -->
+    <div class="modal" id="image-modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+    
+    <!-- Navigation helper -->
+    <div class="navigation-helper">
+        <div class="nav-hint">❤️ Click the hearts and buttons to navigate! ❤️</div>
+    </div>
+    
+    <!-- Floating hearts decoration -->
+    <div class="floating-hearts" id="floating-hearts-container"></div>
+    
+    <!-- Landing Page -->
+    <section id="landing" class="active parallax">
+        <h1 class="typing-text">Happy 4th Anniversary my love!</h1>
+        <p class="typing-text">Hawwo woob woob!</p>
+        <p>I hash planned sumfing special fow ush!</p>
+        <div class="heart" id="landing-heart" onclick="heartClickEffect(event)">❤️</div>
+        <p class="click-hint">Click the heart to continue!</p>
+        <div class="love-meter">
+            <div class="love-fill" id="love-fill"></div>
+            <div class="love-percentage" id="love-percentage">0%</div>
+        </div>
+        <button class="btn btn-3d pulse-animation" onclick="showSection('initial-memory-lane'); playHeartbeatSound();">Clicky to shee!</button>
+    </section>
+    
+    <!-- Date Options -->
+    <section id="date-options" class="parallax">
+        <h1>Choose Our Adventure</h1>
+        <p>I hash planned sum activities that I'd layk to bwing you on fow our special day my love! (I ish paying fow dish special occassion! I insist RAWRRR!)</p>
+        
+        <div class="date-cards">
+            <div class="date-card" onmousemove="tiltCard(event, this)" onmouseleave="resetTilt(this)">
+                <div class="photo-placeholder">Dinner Image</div>
+                <h3>Romantic Dinner</h3>
+                <p>A candlelit evening with your favorite cuisine.</p>
+                <button class="btn" onclick="showSection('romantic-dinner'); playButtonSound();">Choose This</button>
+            </div>
+            
+            <div class="date-card" onmousemove="tiltCard(event, this)" onmouseleave="resetTilt(this)">
+                <div class="photo-placeholder">Picnic Image</div>
+                <h3>Sunset Picnic</h3>
+                <p>Watching the sunset with wine and cheese at our spot.</p>
+                <button class="btn" onclick="showSection('sunset-picnic'); playButtonSound();">Choose This</button>
+            </div>
+            
+            <div class="date-card" onmousemove="tiltCard(event, this)" onmouseleave="resetTilt(this)">
+                <div class="photo-placeholder">Adventure Image</div>
+                <h3>Adventure Day</h3>
+                <p>An exciting day filled with surprises and thrills.</p>
+                <button class="btn" onclick="showSection('adventure-day'); playButtonSound();">Choose This</button>
+            </div>
+            
+            <div class="date-card" onmousemove="tiltCard(event, this)" onmouseleave="resetTilt(this)">
+                <div class="photo-placeholder">Surprise Image</div>
+                <h3>Mystery Option</h3>
+                <p>Something special I've been planning...</p>
+                <button class="btn" onclick="startProposal(); playSpecialSound();">Choose This</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Road Trip Memory -->
+    <section id="roadtrip" class="memory-detail-page parallax">
+        <button class="btn back-btn" onclick="goBackToMemoryLane(); playButtonSound();">Back to Memories</button>
+        <h1>Spontaneous Road Trip</h1>
+        <p>When we took a wrong turn and found that breathtaking view.</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 1: Packing the car</div>
+                <div class="gallery-caption">Throwing everything in the trunk with no real plan, just excited for adventure.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 2: On the road</div>
+                <div class="gallery-caption">Windows down, music up, singing at the top of our lungs on the open road.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 3: The map confusion</div>
+                <div class="gallery-caption">When the GPS died and we tried to use that old paper map from the glove compartment.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 4: Discovering the viewpoint</div>
+                <div class="gallery-caption">Taking that unmarked dirt road that led to the most incredible view we'd ever seen.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 5: Sunset picnic</div>
+                <div class="gallery-caption">Improvising dinner with gas station snacks as the sky turned pink and gold.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 6: Starry night drive home</div>
+                <div class="gallery-caption">Driving back under a blanket of stars, talking about all our future adventures.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- First Kiss Memory -->
+    <section id="first-kiss" class="memory-detail-page parallax">
+        <button class="btn back-btn" onclick="goBackToMemoryLane(); playButtonSound();">Back to Memories</button>
+        <h1>Our First Kiss</h1>
+        <p>That perfect summer night under the stars when everything changed.</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 1: The evening walk</div>
+                <div class="gallery-caption">Our casual stroll that turned into something much more meaningful than either of us expected.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 2: Sitting by the lake</div>
+                <div class="gallery-caption">How the moonlight reflected on the water, making everything feel magical.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 3: Stargazing together</div>
+                <div class="gallery-caption">Pointing out constellations and making up our own when we couldn't remember the real ones.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 4: The moment after</div>
+                <div class="gallery-caption">Both of us smiling so wide, knowing something important had just happened.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 5: Walking home</div>
+                <div class="gallery-caption">Holding hands the entire way back, not wanting the night to end.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 6: Goodnight text screenshot</div>
+                <div class="gallery-caption">"Tonight was perfect. Can't wait to see you tomorrow." The first of many goodnight texts.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Anniversary Memory -->
+    <section id="anniversary" class="memory-detail-page parallax">
+        <button class="btn back-btn" onclick="goBackToMemoryLane(); playButtonSound();">Back to Memories</button>
+        <h1>Anniversary Dinner</h1>
+        <p>Our special night celebrating another year of love.</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 1: Getting ready</div>
+                <div class="gallery-caption">You looking stunning as always, not knowing I had planned a special evening.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 2: Arriving at restaurant</div>
+                <div class="gallery-caption">The hostess leading us to that perfect corner table I'd requested weeks in advance.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 3: Candlelit table</div>
+                <div class="gallery-caption">The beautiful setting with roses on the table and candles glowing softly.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 4: Gift exchange</div>
+                <div class="gallery-caption">Opening our gifts to each other, both so thoughtful in completely different ways.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 5: Dessert celebration</div>
+                <div class="gallery-caption">The chef's special dessert with "Happy Anniversary" written in chocolate.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 6: Moonlit walk after</div>
+                <div class="gallery-caption">Walking through the park after dinner, talking about our favorite memories from the year.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Support Memory -->
+    <section id="support" class="memory-detail-page parallax">
+        <button class="btn back-btn" onclick="goBackToMemoryLane(); playButtonSound();">Back to Memories</button>
+        <h1>When You Were There For Me</h1>
+        <p>The time when your love and support meant everything.</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 1: Holding hands</div>
+                <div class="gallery-caption">The way you held my hand through it all, steady and unwavering.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 2: The card you wrote</div>
+                <div class="gallery-caption">Your heartfelt words that gave me strength when I needed it most.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 3: Comfort food dinner</div>
+                <div class="gallery-caption">When you made my favorite childhood meal because you knew I needed that comfort.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 4: Movie night distraction</div>
+                <div class="gallery-caption">The pillow fort you built in the living room for our movie marathon escape.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 5: The sunrise walk</div>
+                <div class="gallery-caption">Getting me out of bed early to see the sunrise, reminding me of new beginnings.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 6: First smile after tough days</div>
+                <div class="gallery-caption">The moment I realized I was going to be okay because I had you by my side.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Love Quiz Section -->
+    <section id="love-quiz" class="parallax">
+        <h1>How Well Do You Know Me?</h1>
+        <p>Let's see if you remember these special moments...</p>
+        
+        <div class="quiz-container">
+            <div class="quiz-question" id="question-1">
+                <h3>Question 1: What was our first meal together?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(1, 'a')">Pizza</button>
+                    <button class="quiz-option" onclick="checkAnswer(1, 'b')">Ramen</button>
+                    <button class="quiz-option" onclick="checkAnswer(1, 'c')">Burgers</button>
+                </div>
+                <div class="quiz-feedback hidden" id="feedback-1"></div>
+            </div>
+            
+            <div class="quiz-question hidden" id="question-2">
+                <h3>Question 2: Where did we have our first kiss?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(2, 'a')">On the beach</button>
+                    <button class="quiz-option" onclick="checkAnswer(2, 'b')">Under the stars</button>
+                    <button class="quiz-option" onclick="checkAnswer(2, 'c')">At the airport</button>
+                </div>
+                <div class="quiz-feedback hidden" id="feedback-2"></div>
+            </div>
+            
+            <div class="quiz-question hidden" id="question-3">
+                <h3>Question 3: What did I give you on our first anniversary?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" onclick="checkAnswer(3, 'a')">A love letter</button>
+                    <button class="quiz-option" onclick="checkAnswer(3, 'b')">A plush toy</button>
+                    <button class="quiz-option" onclick="checkAnswer(3, 'c')">A photo album</button>
+                </div>
+                <div class="quiz-feedback hidden" id="feedback-3"></div>
+            </div>
+            
+            <div class="quiz-results hidden" id="quiz-results">
+                <h2>Quiz Complete!</h2>
+                <p id="score-display">Your score: 0/3</p>
+                <div class="score-message" id="score-message"></div>
+                <button class="btn" onclick="showProposalSection(); playSpecialSound();">Continue to Something Special</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Proposal Section -->
+    <section id="proposal" class="parallax">
+        <div id="confetti-container"></div>
+        <div class="photo-placeholder proposal-img" onclick="enlargeImage(this)">Couple Image</div>
+        <h1>My Love</h1>
+        <p>Since the day we met, you've brought immeasurable joy and love into my life. Every moment with you feels like a gift, and I want to spend the rest of my life creating more beautiful memories together.</p>
+        <div class="proposal-text">Will You Marry Me?</div>
+        <div class="btn-container">
+            <button id="yes-btn" class="btn response-btn" onclick="showYesResponse(); playSpecialSound();">Yes!</button>
+            <button class="btn response-btn" onclick="showNoResponse(); playButtonSound();">Not Yet</button>
+        </div>
+        <div id="yes-response" class="hidden">
+            <h2>You've made me the happiest person alive! ❤️</h2>
+            <p>I can't wait to start our forever together.</p>
+            <div class="heart" onclick="createRainbowHearts()">❤️</div>
+            <div class="fireworks" id="fireworks-container"></div>
+            <button class="btn" onclick="showSection('future-together'); playSpecialSound();">Our Future Together</button>
+        </div>
+        <div id="no-response" class="hidden">
+            <h2>I understand. When you're ready, I'll be here.</h2>
+            <p>Our love is worth waiting for.</p>
+            <button class="btn" onclick="resetProposal(); playButtonSound();">Let me think again</button>
+        </div>
+    </section>
+    
+    <!-- Future Together Section -->
+    <section id="future-together" class="parallax">
+        <h1>Our Future Together</h1>
+        <p>I can't wait to build our life together. Here are some things I'm looking forward to:</p>
+        
+        <div class="future-dreams">
+            <div class="future-dream" onclick="dreamHover(this)">
+                <div class="dream-icon">🏠</div>
+                <h3>Our Home</h3>
+                <p>Finding our perfect cozy place where we can build our life together.</p>
+            </div>
+            
+            <div class="future-dream" onclick="dreamHover(this)">
+                <div class="dream-icon">✈️</div>
+                <h3>Adventures</h3>
+                <p>Exploring the world together, creating memories in new places.</p>
+            </div>
+            
+            <div class="future-dream" onclick="dreamHover(this)">
+                <div class="dream-icon">👨‍👩‍👧‍👦</div>
+                <h3>Family</h3>
+                <p>Growing our little family and filling our home with love and laughter.</p>
+            </div>
+            
+            <div class="future-dream" onclick="dreamHover(this)">
+                <div class="dream-icon">👵👴</div>
+                <h3>Growing Old</h3>
+                <p>Holding hands on a porch swing, looking back on a lifetime of love.</p>
+            </div>
+        </div>
+        
+        <div class="final-message">
+            <h2>I love you more than words can say</h2>
+            <p>Thank you for being my person, my home, my heart.</p>
+            <div class="heart" onclick="createRainbowHearts()">❤️</div>
+        </div>
+        
+        <button class="btn" onclick="showSection('landing'); playButtonSound();">Start Over</button>
+    </section>
+    
+    <!-- JavaScript for interactive elements -->
+    <script>
+        // Track current section for navigation
+        let currentSection = 'landing';
+        let previousMemorySection = 'initial-memory-lane';
+        
+        // Audio elements
+        const backgroundMusic = document.getElementById('background-music');
+        let isMusicPlaying = false;
+        
+        // Quiz variables
+        let quizScore = 0;
+        const correctAnswers = {
+            1: 'b', // Ramen
+            2: 'b', // Under the stars
+            3: 'c'  // Photo album
+        };
+
+        function setupVolumeControl() {
+    // Create volume control container
+    const volumeControl = document.createElement('div');
+    volumeControl.className = 'volume-control';
+    volumeControl.innerHTML = `
+        <div class="volume-slider-container">
+            <input type="range" min="0" max="100" value="30" class="volume-slider" id="volume-slider">
+            <div class="volume-level">30%</div>
+        </div>
+    `;
+    
+    // Add it next to audio control
+    const audioControl = document.querySelector('.audio-control');
+    document.body.appendChild(volumeControl);
+    
+    // Position it near the audio control
+    function positionVolumeControl() {
+        const audioRect = audioControl.getBoundingClientRect();
+        volumeControl.style.bottom = (window.innerHeight - audioRect.top + 10) + 'px';
+        volumeControl.style.right = (window.innerWidth - audioRect.right + 70) + 'px';
+    }
+    
+    positionVolumeControl();
+    window.addEventListener('resize', positionVolumeControl);
+    
+    // Initially hide it
+    volumeControl.style.display = 'none';
+    
+    // Toggle volume control when audio control is right-clicked or long-pressed
+    let longPressTimer;
+    
+    audioControl.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        toggleVolumeControl();
+    });
+    
+    audioControl.addEventListener('touchstart', function() {
+        longPressTimer = setTimeout(function() {
+            toggleVolumeControl();
+        }, 800); // Long press time in ms
+    });
+    
+    audioControl.addEventListener('touchend', function() {
+        clearTimeout(longPressTimer);
+    });
+    
+    // Function to toggle volume control visibility
+    function toggleVolumeControl() {
+        if (volumeControl.style.display === 'none') {
+            volumeControl.style.display = 'block';
+            // Show a hint about how to use
+            showSpeechBubble(audioControl, 'Adjust volume!');
+        } else {
+            volumeControl.style.display = 'none';
+        }
+    }
+    
+    // Handle volume changes
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeLevel = document.querySelector('.volume-level');
+    
+    volumeSlider.addEventListener('input', function() {
+        const volumeValue = this.value / 100;
+        backgroundMusic.volume = volumeValue;
+        volumeLevel.textContent = this.value + '%';
+        
+        // Also adjust sound effect volumes proportionally
+        window.soundEffectVolume = volumeValue;
+    });
+    }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize loading screen
+            const loadingScreen = document.querySelector('.loading-screen');
+            const loadingHeart = document.querySelector('.loading-heart');
+            
+            // Skip loading on click
+            loadingHeart.addEventListener('click', function() {
+                hideLoadingScreen();
+            });
+
+            setupVolumeControl();
+            
+            // Auto hide loading screen after 3 seconds
+            setTimeout(hideLoadingScreen, 3000);
+            
+            // Setup love meter animation
+            animateLoveMeter();
+            
+            // Setup floating hearts
+            createFloatingHearts();
+            
+            // Show navigation helper after a delay
+            setTimeout(function() {
+                document.querySelector('.navigation-helper').classList.add('show');
+                
+                // Hide navigation helper after 5 seconds
+                setTimeout(function() {
+                    document.querySelector('.navigation-helper').classList.remove('show');
+                }, 5000);
+            }, 5000);
+            
+            // Highlight the heart after a delay if no interaction
+            setTimeout(function() {
+                if (currentSection === 'landing') {
+                    document.getElementById('landing-heart').classList.add('highlight-heart');
+                    // Add speech bubble
+                    showSpeechBubble(document.getElementById('landing-heart'), 'Click me!');
+                }
+            }, 8000);
+            
+            // Custom cursor setup
+            const customCursor = document.querySelector('.custom-cursor');
+            document.addEventListener('mousemove', function(e) {
+                customCursor.style.display = 'block';
+                customCursor.style.left = e.clientX + 'px';
+                customCursor.style.top = e.clientY + 'px';
+            });
+        });
+        
+        // Hide loading screen
+        function hideLoadingScreen() {
+            const loadingScreen = document.querySelector('.loading-screen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(function() {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+        
+        // Create floating hearts background
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts-container');
+            const heartSizes = ['1rem', '1.5rem', '2rem', '2.5rem'];
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.bottom = '-2rem';
+                heart.style.fontSize = heartSizes[Math.floor(Math.random() * heartSizes.length)];
+                heart.style.animationDuration = 15 + Math.random() * 30 + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.opacity = 0.1 + Math.random() * 0.3;
+                heart.style.transform = `scale(${0.5 + Math.random() * 0.5})`;
+                container.appendChild(heart);
+            }
+        }
+        
+        // Navigation function - Show a specific section
+        function showSection(sectionId) {
+            // Hide current section
+            document.getElementById(currentSection).classList.remove('active');
+            
+            // Show new section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update current section
+            currentSection = sectionId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Show memory detail page
+        function showMemoryDetail(memoryId) {
+            // Hide current section
+            document.getElementById(currentSection).classList.remove('active');
+            
+            // Remember previous section for back button
+            previousMemorySection = currentSection;
+            
+            // Show memory detail page
+            document.getElementById(memoryId).classList.add('active');
+            
+            // Update current section
+            currentSection = memoryId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Go back to memory lane
+        function goBackToMemoryLane() {
+            // Hide current section
+            document.getElementById(currentSection).classList.remove('active');
+            
+            // Show memory lane section
+            document.getElementById(previousMemorySection).classList.add('active');
+            
+            // Update current section
+            currentSection = previousMemorySection;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Heart click effect
+        function heartClickEffect(event) {
+            // Remove highlight and speech bubble if present
+            event.target.classList.remove('highlight-heart');
+            const bubble = event.target.querySelector('.speech-bubble');
+            if (bubble) bubble.remove();
+            
+            // Create mini hearts burst effect
+            for (let i = 0; i < 10; i++) {
+                createMiniHeart(event.clientX, event.clientY);
+            }
+            
+            // Navigate to next section
+            if (currentSection === 'landing') {
+                showSection('initial-memory-lane');
+                playHeartbeatSound();
+            } else {
+                createRainbowHearts();
+            }
+        }
+        
+        // Create mini heart for burst effect
+        function createMiniHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = Math.random() * 1 + 0.5 + 'rem';
+            heart.style.transform = 'translate(-50%, -50%)';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            
+            // Random direction
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 100 + 50;
+            const duration = Math.random() * 1 + 0.5;
+            
+            heart.style.transition = `all ${duration}s ease-out`;
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
+                heart.style.opacity = '0';
+            }, 10);
+            
+            setTimeout(() => {
+                document.body.removeChild(heart);
+            }, duration * 1000);
+        }
+        
+        // Create rainbow hearts animation
+        function createRainbowHearts() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#f9d423', '#fc913a', '#a696c8'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerText = '❤';
+                    heart.style.position = 'fixed';
+                    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    heart.style.fontSize = Math.random() * 2 + 1 + 'rem';
+                    heart.style.zIndex = '1000';
+                    heart.style.pointerEvents = 'none';
+                    
+                    const animation = heart.animate([
+                        { transform: 'translateY(0)', opacity: 1 },
+                        { transform: `translateY(-${100 + Math.random() * 200}vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    ], {
+                        duration: 4000 + Math.random() * 3000,
+                        easing: 'cubic-bezier(0.1, 0.8, 0.9, 0.2)'
+                    });
+                    
+                    document.body.appendChild(heart);
+                    
+                    animation.onfinish = () => {
+                        document.body.removeChild(heart);
+                    };
+                }, i * 100);
+            }
+            
+            playSpecialSound();
+        }
+        
+        // Toggle background music
+        function toggleAudio() {
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                document.querySelector('.audio-icon').innerHTML = '♪';
+            } else {
+                backgroundMusic.play();
+                document.querySelector('.audio-icon').innerHTML = '♫';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+        
+        // Play sound effects
+        function playButtonSound() {
+            const audio = new Audio('https://assets.codepen.io/4358584/click1.mp3');
+            audio.volume = soundEffectVolume * 0.6; // Even quieter for button clicks
+            audio.play().catch(e => console.log("Button sound prevented:", e));
+        }
+
+        function playHeartbeatSound() {
+            const audio = new Audio('https://assets.codepen.io/4358584/heartbeat.mp3');
+            audio.volume = soundEffectVolume * 0.8; // Slightly quieter
+            audio.play().catch(e => console.log("Heartbeat sound prevented:", e));
+        }
+
+        function playSpecialSound() {
+            const audio = new Audio('https://assets.codepen.io/4358584/success.mp3');
+            audio.volume = soundEffectVolume; // Use the global volume setting
+            audio.play().catch(e => console.log("Special sound prevented:", e));
+        }
+        
+        // Animate love meter
+        function animateLoveMeter() {
+            const loveFill = document.getElementById('love-fill');
+            const lovePercentage = document.getElementById('love-percentage');
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    loveFill.style.width = width + '%';
+                    lovePercentage.textContent = width + '%';
+                    
+                    if (width > 50) {
+                        lovePercentage.style.color = 'white';
+                    }
+                }
+            }, 20);
+        }
+        
+        // Tilt card effect
+        function tiltCard(event, card) {
+            const cardRect = card.getBoundingClientRect();
+            const centerX = cardRect.left + cardRect.width / 2;
+            const centerY = cardRect.top + cardRect.height / 2;
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            
+            const maxRotation = 15;
+            
+            const rotateX = ((centerY - mouseY) / (cardRect.height / 2)) * maxRotation;
+            const rotateY = ((mouseX - centerX) / (cardRect.width / 2)) * maxRotation;
+            
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        }
+        
+        function resetTilt(card) {
+            card.style.transform = 'rotateX(0) rotateY(0) translateY(-10px)';
+        }
+        
+        // Enlarge image modal
+        function enlargeImage(imgElement) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            
+            if (imgElement.tagName === 'IMG') {
+                modalImg.src = imgElement.src;
+            } else {
+                // For placeholder divs, we just show a colored background
+                modalImg.src = '/api/placeholder/800/500';
+            }
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('image-modal').style.display = 'none';
+        }
+        
+        // Quiz functionality
+        function checkAnswer(questionNum, answer) {
+            const feedbackElement = document.getElementById(`feedback-${questionNum}`);
+            feedbackElement.classList.remove('hidden');
+            
+            if (answer === correctAnswers[questionNum]) {
+                feedbackElement.textContent = 'Correct! 💕';
+                feedbackElement.style.color = 'green';
+                quizScore++;
+            } else {
+                feedbackElement.textContent = 'Not quite... the correct answer is highlighted 💜';
+                feedbackElement.style.color = 'red';
+            }
+            
+            // Highlight correct answer
+            const options = document.querySelectorAll(`#question-${questionNum} .quiz-option`);
+            options.forEach(option => {
+                option.disabled = true;
+                if (option.textContent.toLowerCase().charAt(0) === correctAnswers[questionNum]) {
+                    option.style.backgroundColor = 'rgba(78, 205, 196, 0.7)';
+                    option.style.fontWeight = 'bold';
+                }
+            });
+            
+            // Move to next question or show results
+            setTimeout(() => {
+                if (questionNum < 3) {
+                    document.getElementById(`question-${questionNum}`).classList.add('hidden');
+                    document.getElementById(`question-${questionNum + 1}`).classList.remove('hidden');
+                } else {
+                    // Show results
+                    document.querySelectorAll('.quiz-question').forEach(q => q.classList.add('hidden'));
+                    const resultsElement = document.getElementById('quiz-results');
+                    resultsElement.classList.remove('hidden');
+                    
+                    document.getElementById('score-display').textContent = `Your score: ${quizScore}/3`;
+                    
+                    const messageElement = document.getElementById('score-message');
+                    if (quizScore === 3) {
+                        messageElement.textContent = 'Perfect score! You know me so well! ❤️';
+                        messageElement.style.color = 'green';
+                    } else if (quizScore >= 1) {
+                        messageElement.textContent = 'Not bad! There\'s always more to learn about each other! 💕';
+                        messageElement.style.color = 'orange';
+                    } else {
+                        messageElement.textContent = 'That\'s okay! Let\'s keep creating memories together! 💜';
+                        messageElement.style.color = 'purple';
+                    }
+                }
+            }, 1500);
+        }
+        
+        // Show proposal section
+        function showProposalSection() {
+            showSection('proposal');
+            createConfetti();
+        }
+        
+        // Start proposal experience
+        function startProposal() {
+            showSection('memory-lane');
+        }
+        
+        // Show yes response
+        function showYesResponse() {
+            document.getElementById('yes-response').classList.remove('hidden');
+            document.querySelector('#proposal .btn-container').classList.add('hidden');
+            createConfetti();
+        }
+        
+        // Show no response
+        function showNoResponse() {
+            document.getElementById('no-response').classList.remove('hidden');
+            document.querySelector('#proposal .btn-container').classList.add('hidden');
+        }
+        
+        // Reset proposal
+        function resetProposal() {
+            document.getElementById('no-response').classList.add('hidden');
+            document.querySelector('#proposal .btn-container').classList.remove('hidden');
+        }
+        
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ff6b6b', '#4ecdc4', '#f9d423', '#fc913a', '#a696c8', '#ffffff'];
+            const confettiCount = 200;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.opacity = Math.random() + 0.5;
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                container.appendChild(confetti);
+                
+                // Remove confetti after animation completes
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Dream hover effect
+        function dreamHover(dreamElement) {
+            dreamElement.style.transform = 'scale(1.05)';
+            dreamElement.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
+            
+            setTimeout(() => {
+                dreamElement.style.transform = 'scale(1)';
+                dreamElement.style.boxShadow = 'none';
+            }, 500);
+        }
+        
+        // Play video
+        function playVideo(videoId) {
+            // This would normally create a video modal, but we're using placeholders
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            
+            modalImg.src = '/api/placeholder/800/450';
+            modal.style.display = 'flex';
+        }
+        
+        // Show speech bubble
+        function showSpeechBubble(element, text) {
+            // Remove existing bubbles
+            const existingBubble = element.querySelector('.speech-bubble');
+            if (existingBubble) existingBubble.remove();
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'speech-bubble';
+            bubble.textContent = text;
+            bubble.style.opacity = '0';
+            element.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.style.opacity = '1';
+                bubble.style.transform = 'translateX(-50%) translateY(0)';
+            }, 10);
+            
+            setTimeout(() => {
+                bubble.style.opacity = '0';
+                bubble.style.transform = 'translateX(-50%) translateY(10px)';
+                
+                setTimeout(() => {
+                    if (bubble.parentNode === element) {
+                        element.removeChild(bubble);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+    <!-- Celebration Memory -->
+    <section id="celebration" class="memory-detail-page parallax">
+        <button class="btn back-btn" onclick="goBackToMemoryLane(); playButtonSound();">Back to Memories</button>
+        <h1>Your Promotion Party</h1>
+        <p>Celebrating your hard work and success with everyone who loves you.</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 1: The setup</div>
+                <div class="gallery-caption">Your friends helping me decorate while you were at work, rushing before you got home.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 2: Your surprised face</div>
+                <div class="gallery-caption">The pure shock when everyone jumped out. I thought you might drop your bag!</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 3: The champagne toast</div>
+                <div class="gallery-caption">When your boss gave that heartfelt speech about how proud they were of you.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 4: Friends celebrating</div>
+                <div class="gallery-caption">Everyone who's been there through your journey, celebrating your success.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 5: Dancing together</div>
+                <div class="gallery-caption">That impromptu dance when your favorite song came on. You were glowing.</div>
+            </div>
+            <div class="gallery-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Photo 6: End of night selfie</div>
+                <div class="gallery-caption">Exhausted but so proud. I'll never forget how happy you looked that night.</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Romantic Dinner -->
+    <section id="romantic-dinner" class="parallax">
+        <h1>Romantic Dinner</h1>
+        <div class="photo-placeholder" onclick="enlargeImage(this)">Dinner Setting Image</div>
+        <p>I've made reservations at your favorite restaurant where we had our first date. We can enjoy a perfect evening together, reminiscing about our journey.</p>
+        <p>After dinner, we can take a moonlit walk along the waterfront.</p>
+        <div class="btn-container">
+            <button class="btn" onclick="showSection('date-options'); playButtonSound();">Choose Another Option</button>
+            <button class="btn" onclick="startProposal(); playSpecialSound();">What's The Surprise?</button>
+        </div>
+    </section>
+    
+    <!-- Adventure Day -->
+    <section id="adventure-day" class="parallax">
+        <h1>Adventure Day</h1>
+        <div class="photo-placeholder" onclick="enlargeImage(this)">Adventure Image</div>
+        <p>Let's have a day full of excitement! We'll start with breakfast at that little café you love, then go hiking to that waterfall we've been meaning to visit.</p>
+        <p>For the afternoon, I've got something special planned that will take your breath away.</p>
+        <div class="btn-container">
+            <button class="btn" onclick="showSection('date-options'); playButtonSound();">Choose Another Option</button>
+            <button class="btn" onclick="startProposal(); playSpecialSound();">What's The Special Plan?</button>
+        </div>
+    </section>
+
+    
+    
+    <!-- Initial Memory Lane (before date options) -->
+    <section id="initial-memory-lane">
+        <h1>Our Journey togethew so far!</h1>
+        <p>Befowe anyfing else, lesh take a stroll down the memowy lane da wabis hash had togethew!</p>
+        
+        <div class="memory-container">
+            <div class="memory-item">
+                <img src="sg1/first-taym.jpg" alt="First Date" class="photo">
+                <p>Woobi's fiwsh taym in sg! (alsho our fiwsh taym meeting irl!) 👩‍❤️‍💋‍👨</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('first-taym')">See More Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <img src="sg2/coolwabi.jpg" alt="First Date" class="photo">
+                <p>Woob's second time in sg! ❤️</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('second-taym')">Shee Mawr Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <img src="sg3/goldenhouw.jpg" alt="First Date" class="photo">
+                <p>Wabi's third time in sg heheh (tenksh fow alwaysh coming to shee me) ❤️❤️</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('third-taym')">Shee Mawr Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <img src="bohol1/flight.jpg" alt="First Date" class="photo">
+                <p>Fiwsh taym flying ovew to shee wabi!! (fwish taym evew flying actuawwy)❤️✈️ </p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('bohol')">Shee Mawr Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <img src="sg4/feed.jpg" alt="First Date" class="photo">
+                <p>Woobi in sg again!! hehehe</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('fourth-taym')">Shee Mawr Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <div class="photo-placeholder">Adventure</div>
+                <p>Our spontaneous road trip where we got lost but found that amazing view.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('roadtrip')">See More Photos</button>
+            </div>
+        </div>
+        
+        <button class="btn" onclick="showSection('date-options')">Now Let's Plan Our Next Adventure</button>
+    </section>
+    
+    <!-- Memory Lane (before proposal) -->
+    <section id="memory-lane">
+        <h1>Our Journey Together</h1>
+        <p>Before we go further, let's take a moment to remember some of our special moments...</p>
+        
+        <div class="memory-container">
+            <div class="memory-item">
+                <div class="photo-placeholder">First Kiss</div>
+                <p>Our first kiss under the stars on that perfect summer night.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('first-kiss')">See More Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <div class="photo-placeholder">Special Date</div>
+                <p>That surprise anniversary dinner where everything went perfectly.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('anniversary')">See More Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <div class="photo-placeholder">Meaningful Moment</div>
+                <p>When you held my hand through that difficult time and made everything better.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('support')">See More Photos</button>
+            </div>
+        </div>
+        
+        <button class="btn" onclick="showProposalSection()">Continue Our Journey</button>
+    </section>
+    
+    <!-- Add Memory Detail Pages -->
+    <!-- First Date Memory -->
+    <section id="first-taym" class="memory-detail-page">
+        <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+        <h1>Our first taym meeting!</h1>
+        <p>Woobi's fiwsh taym in sg ❤️</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="sg1/shelfee.png" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">One of our fiwsh pwopew pic togethew!! (i was sho newvoush shtill)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg1/shelfee1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">When woobi wanted to looky at miniso XD</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg1/wabi-hide.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Da cootie woobi hiding behind me duwing pictuwe!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg1/botak.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Botak shelfee haiya ( but i bet you layk it 😠)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg1/wamen.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">When I wash hungwy at aiwpowt but evewithing wash closed sho da wabi insisted fow ush to eat wamen heheh</div>
+            </div>
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="sg1/wifey.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">da wabi calling me wifey rawr!</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Woob's second time in sg -->
+    <section id="second-taym" class="memory-detail-page">
+        <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+        <h1>Wabi's fiwsh solo trip to sg</h1>
+        <p>Woobi's 2nd time in sg!!</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="sg2/fitchack.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">fit chack fow when i picked wabi up fow wabi's 2nd time in sg 👀</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg2/jinjja.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Ordered in Jinjja chican becosh we wash too lazy to go out!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg2/jinjja2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">My cootie wabi heheh</div>
+            </div>
+
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="sg2/cootie.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">me and my woobi!</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="sg2/marina.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">wabi at marina bay! ft. my expert level foto taking skillsh at dat taym XD</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg2/shelfee1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Shelfee taym!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg2/shelfee2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Looky haow coot my wabi ish</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="sg2/shelfee3.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Mwah!</div>
+            </div>
+
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="sg2/awm-wrestle.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">arm wrestling wid da wabi befowe our fud came XD</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="sg2/jj.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">wabi's fiwsh shweep bacc at cottage wid vewy fiwsh soft toy gift heheh our fiwsh child JJ!</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Wabi's third time in sg -->
+    <section id="third-taym" class="memory-detail-page">
+        <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+        <h1>My baby's thiwd taym in sg!!</h1>
+        <p>My baby looksh sho cooooooot!!!</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="sg3/pwata.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Woobi's requested meal aftuw lasht taym! mushwoom chish pwata om nyom nyom 🍽</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/mawinabay.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">da wabis set out to MBS for adventuwe!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/gondola.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Gotsh fwee gondola tix fwom wandom pipol! hehehe</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/uhmidk.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Post-gwab pictuwe (we eawned $5 in an houw XD)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/saizeriyaa.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Post-gwab meal!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/dessewt.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">dessewt fwom chateraise nyehehehe</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/dunkinmochi.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woobi myanching dunkin mochi donut and falling in love wid it heheh coot!!!!!! </div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/sushi!!!.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Woobi's fiwsh sushi belt expewience! 🍣</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/tiongbahru!.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">our fiwsh tiong bahru bakery experience togethew! (i may hash ovew ordewed heheh sowee)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/ducknoodlesh.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woobi's fiwsh taym twying duck noodle! 🦤</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/annoyed.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woobi annoyed at my foto taking skillsh XD (post botanic gawdens!!)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/goldenhouw.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">headingsh hawm by bus! golden houwwww ☀️</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/weavingagain.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">lasht pic of ush fow dish visit 😭 bai bai</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg3/children.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woobi bacc hawm, naow wid two of our childwen!! JJ and MJ!!</div>
+            </div>
+            
+
+        </div>
+    </section>
+    
+    <!-- Fiwsh Bohol twip!! -->
+    <section id="bohol" class="memory-detail-page">
+        <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+        <h1>My fiwsh twip to Bohol!!!</h1>
+        <p>When I tooky my fiwsh flight evew to shee wabi!!</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="bohol1/cebu.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Awwived in cebu and otw to fewwy tewminal to go bohol!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/awwival.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Awwived in bohol aftuw 2 hrsh!! weeeeeeee 🏝</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/moto.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">while queuing fow jabbee dwive thru we saw a moto stashed in the back of a car XD</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/jabbee.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">fiwsh meal aftuw awwiving in Bohol! nyom nyom bucket fwiesh</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/vwoom!.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Vwoom!!!!</div>
+            </div>
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="bohol1/dwivee.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">da wabi filming me dwivey heheh</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/sunrise.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">da next mawnin aftuw awwival!! weady to conquer bohol wid dish cootie wabi nyehehe</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/filipinobf.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">fiwsh taym twying filipino bfast in panglao!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/commoncrew.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">posht bwekky cawfee! ish fiwsh taym woobi let me twy common crew!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/pizzaa.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">gotsh takeout pizza and carbonara!! food wid a gud view (my wabi ish da view)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/sunset.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">caughtsh da sunset wid wabi heheh</div>
+            </div>
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="bohol1/bwidge!.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Outsh fow adventuwe taym!! featuwing da bwidgeee</div>
+            </div>
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="bohol1/manmade.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Manmade fowest!! I wemembew being sho amazed HAHAHA</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/tarsiers.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">tarsiew sanctuawy!!! (spot da tarsier(s))</div>
+            </div>
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="bohol1/welcomechoc.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">weaching choccy hill townside!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/choccy.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">my baby wid choccy hillsh heheh</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/rest.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">da wabi hadsh to resty 3/4 way up laaa!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/choccy1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">weached da top fow dish view!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/tarsiers.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">tarsiew sanctuawy!!! (spot da tarsier(s))</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/samgyup.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">fiwsh taym at taskus samgyup!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/kish.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">wabi 1 headingsh hawm na 😢</div>
+            </div>
+            <div class="gallery-item">
+                <img src="bohol1/flighthawm.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">bai bai fow naow Bohol! I'll be bacc shoon 🥥✈️🏝</div>
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <section id="fourth-taym" class="memory-detail-page">
+        <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+        <h1>wabi's fouwth taym in sg!! I wuvv youuuuuuuuu ❤️</h1>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="sg4/remake.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Boughtsh yewwow sheetsh for wabi's awwival!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/dtf.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woobi and hew smol bowl of dtf beef noodlesh! cutiee</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/tofu.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">wabi vs tofu</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/pwata!.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">My cootie wabi heheh</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/imkim.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">im kim's kbbq wid wabi!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/wacist.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">bonus pic of wabi being wacist!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/shweep.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woob woob bacc hawm fwom dish twip</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fifth-taym" class="memory-detail-page">
+        <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+        <h1>wabi's fifth taym in sg! heheh showee wann</h1>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="sg4/remake.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">Boughtsh yewwow sheetsh for wabi's awwival!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/dtf.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woobi and hew smol bowl of dtf beef noodlesh! cutiee</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/tofu.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">wabi vs tofu</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/pwata!.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">My cootie wabi heheh</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/imkim.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">im kim's kbbq wid wabi!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/wacist.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">bonus pic of wabi being wacist!!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="sg4/shweep.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <div class="gallery-caption">woob woob bacc hawm fwom dish twip</div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    <!-- Memory Lane (before proposal) -->
+    <section id="memory-lane" class="parallax">
+        <h1>Our Journey Together</h1>
+        <p>Before we go further, let's take a moment to remember some of our special moments...</p>
+        
+        <div class="memory-container">
+            <div class="memory-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">First Kiss</div>
+                <p>Our first kiss under the stars on that perfect summer night.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('first-kiss'); playButtonSound();">See More Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Special Date</div>
+                <p>That surprise anniversary dinner where everything went perfectly.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('anniversary'); playButtonSound();">See More Photos</button>
+            </div>
+            
+            <div class="memory-item">
+                <div class="photo-placeholder" onclick="enlargeImage(this)">Meaningful Moment</div>
+                <p>When you held my hand through that difficult time and made everything better.</p>
+                <button class="btn memory-btn" onclick="showMemoryDetail('support'); playButtonSound();">See More Photos</button>
+            </div>
+        </div>
+        
+        <button class="btn btn-3d" onclick="showProposalSection(); playSpecialSound();">Continue Our Journey</button>
+    </section>
