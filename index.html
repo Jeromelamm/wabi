@@ -4,1048 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Special Person</title>
-    <style>
-        :root {
-            --primary: #ff6b6b;
-            --secondary: #4ecdc4;
-            --dark: #292f36;
-            --light: #FDFD96;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-
-        section {
-            min-height: 100vh;
-            display: none;
-            padding: 2rem;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            transition: all 0.5s ease-in-out;
-        }
-
-        section.active {
-            display: flex;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: colorShift 5s infinite alternate;
-        }
-
-        @keyframes colorShift {
-            0% { color: var(--primary); }
-            50% { color: var(--secondary); }
-            100% { color: var(--primary); }
-        }
-
-        h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        p {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-        }
-
-        .btn-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .btn:hover::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
-        }
-
-        .date-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .date-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .date-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .date-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .heart {
-            color: var(--primary);
-            font-size: 5rem;
-            margin: 2rem;
-            animation: pulse 1.5s infinite;
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-        }
-
-        .heart:hover {
-            animation: pulse 0.7s infinite;
-        }
-        
-        .heart::after {
-            content: 'Click me!';
-            position: absolute;
-            font-size: 1rem;
-            color: var(--dark);
-            width: 100px;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .heart:hover::after {
-            opacity: 1;
-        }
-        
-        .click-hint {
-            font-size: 1rem;
-            color: var(--dark);
-            opacity: 0.7;
-            animation: fadeInOut 2s infinite;
-            margin-top: -1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .pulse-animation {
-            animation: buttonPulse 2s infinite;
-        }
-        
-        @keyframes buttonPulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 rgba(255,107,107,0.4);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 20px rgba(255,107,107,0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 rgba(255,107,107,0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .proposal-text {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin: 2rem 0;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s forwards 1s;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .photo-placeholder {
-            width: 300px;
-            height: 200px;
-            background-color: #ddd;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #888;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .photo-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: skewX(-25deg);
-            transition: all 0.7s ease;
-        }
-
-        .photo-placeholder:hover::before {
-            left: 100%;
-        }
-
-        .photo-placeholder:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .memory-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            max-width: 1200px;
-        }
-
-        .memory-item {
-            width: 250px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s forwards;
-            transition: all 0.3s ease;
-        }
-
-        .memory-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .memory-detail-page {
-            padding: 3rem;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .memory-detail-page.active {
-            display: flex;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .gallery-item {
-            width: 300px;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            flex: 0 0 calc(33.333% - 2rem);
-            max-width: calc(33.333% - 2rem);
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03) translateY(-5px);
-            z-index: 1;
-        }
-
-        .gallery-image {
-            width: 300px;
-            height: 200px;
-            background-color: #eee;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #888;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-caption {
-            font-size: 0.9rem;
-            color: var(--dark);
-            text-align: center;
-            font-style: italic;
-            padding: 0 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn {
-            background-color: var(--dark);
-            margin-bottom: 2rem;
-        }
-
-        .memory-btn {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .photo {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: all 0.5s ease;
-            cursor: pointer;
-        }
-
-        .photo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .romantic-video {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 16px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            margin: 20px auto;
-            display: block;
-            transition: all 0.3s ease;
-        }
-
-        .romantic-video:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-    /* Update the existing staggered animation for each memory item */
-    .memory-item:nth-child(1) { animation-delay: 0.1s; }
-    .memory-item:nth-child(2) { animation-delay: 0.3s; }
-    .memory-item:nth-child(3) { animation-delay: 0.5s; }
-    .memory-item:nth-child(4) { animation-delay: 0.7s; }
-    .memory-item:nth-child(5) { animation-delay: 0.9s; }
-    .memory-item:nth-child(6) { animation-delay: 1.1s; }
-    .memory-item:nth-child(7) { animation-delay: 1.3s; }
-    .memory-item:nth-child(8) { animation-delay: 1.5s; } 
-    .memory-item:nth-child(9) { animation-delay: 1.7s; } 
-    .memory-item:nth-child(10) { animation-delay: 1.9s; } 
-    .memory-item:nth-child(11) { animation-delay: 2.1s; } 
-    .memory-item:nth-child(12) { animation-delay: 2.3s; } 
-    .memory-item:nth-child(13) { animation-delay: 2.5s; } 
-
-        .hidden {
-            display: none;
-        }
-
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: var(--primary);
-            animation: fall linear forwards;
-            z-index: 1000;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        .proposal-img {
-            max-width: 400px;
-            border-radius: 15px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .response-btn {
-            font-size: 1.5rem;
-            padding: 1rem 3rem;
-            margin: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .response-btn:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        #yes-btn {
-            background-color: var(--secondary);
-        }
-
-        /* Modal styles for image enlargement */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255,255,255,0.2);
-            animation: zoomIn 0.3s ease-out;
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .close-modal:hover {
-            transform: scale(1.2);
-        }
-
-        /* Parallax effect for sections */
-        .parallax {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .parallax::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Floating hearts decoration */
-        .floating-hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-heart {
-            position: absolute;
-            color: var(--primary);
-            opacity: 0.3;
-            animation: float linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-            }
-        }
-
-        /* Custom cursor for romantic feel */
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: rgba(255, 107, 107, 0.5);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            display: none;
-        }
-
-        /* Audio player for background music */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-
-        .audio-control:hover {
-            transform: scale(1.1);
-        }
-
-        .audio-icon {
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        /* Loading animation */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--light);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            transition: all 0.5s ease;
-        }
-
-        .loading-heart {
-            font-size: 5rem;
-            color: var(--primary);
-            animation: loadingPulse 1s infinite;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .loading-heart::after {
-            content: 'Click to skip';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .loading-heart:hover::after {
-            opacity: 1;
-        }
-
-        .loading-text {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-top: 20px;
-            animation: fadeInOut 2s infinite;
-        }
-        
-        /* Highlight effect for the heart */
-        .highlight-heart {
-            animation: highlightPulse 1s infinite !important;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-            border-radius: 50%;
-        }
-        
-        @keyframes highlightPulse {
-            0% {
-                transform: scale(1);
-                text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-            }
-            50% {
-                transform: scale(1.2);
-                text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
-            }
-            100% {
-                transform: scale(1);
-                text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-            }
-        }
-        
-        /* Speech bubble for heart */
-        .speech-bubble {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background-color: white;
-            color: var(--primary);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 1rem;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            pointer-events: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-        
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 8px 8px 0;
-            border-style: solid;
-            border-color: white transparent transparent;
-        }
-
-        @keyframes loadingPulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.3);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        /* Navigation helper styles */
-        .navigation-helper {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .navigation-helper.show {
-            opacity: 1;
-        }
-        
-        .nav-hint {
-            font-size: 1rem;
-            color: var(--primary);
-            animation: pulse 2s infinite;
-        }
-        
-        /* Typing effect for landing page */
-        .typing-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 2px;
-            animation: typing 3.5s steps(40, end);
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        /* 3D effect for buttons */
-        .btn-3d {
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .back-button-container {
-        margin: 2rem auto; 
-        text-align: center;
-         width: 100%;
-}
-
-        .btn-3d:active {
-            transform: translateY(0) scale(0.95);
-        }
-
-        /* Interactive love meter */
-        .love-meter {
-            width: 300px;
-            height: 40px;
-            background-color: #f0f0f0;
-            border-radius: 20px;
-            margin: 2rem auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .love-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            transition: width 2s ease-in-out;
-        }
-
-        .love-percentage {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--dark);
-            font-weight: bold;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
-            transition: color 0.5s ease;
-        }
-
-        .volume-control {
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 99;
-}
-
-/* Add these styles to your existing CSS */
-
-/* Year Selection Page */
-.year-collages {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3rem;
-    margin: 3rem 0;
-}
-
-.year-collage {
-    position: relative;
-    width: 300px;
-    height: 350px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.year-collage:hover {
-    transform: translateY(-15px) rotateY(5deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-}
-
-.year-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--primary);
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 1rem 0;
-    text-align: center;
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.collage-container {
-    position: relative;
-    width: 100%;
-    height: 80%;
-    overflow: hidden;
-    padding-top: 4rem;
-}
-
-.collage-img {
-    position: absolute;
-    width: 220px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.collage-img-1 {
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -20%) rotate(-8deg);
-    z-index: 3;
-}
-
-.collage-img-2 {
-    top: 38%;
-    left: 50%;
-    transform: translate(-60%, 0%) rotate(5deg);
-    z-index: 2;
-}
-
-.collage-img-3 {
-    top: 50%;
-    left: 50%;
-    transform: translate(-40%, 20%) rotate(-5deg);
-    z-index: 1;
-}
-
-.year-collage:hover .collage-img-1 {
-    transform: translate(-50%, -25%) rotate(-12deg);
-}
-
-.year-collage:hover .collage-img-2 {
-    transform: translate(-65%, 5%) rotate(8deg);
-}
-
-.year-collage:hover .collage-img-3 {
-    transform: translate(-35%, 25%) rotate(-8deg);
-}
-
-.year-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--secondary);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-/* Year Memory Sections */
-.year-memories {
-    min-height: 100vh;
-    display: none;
-    padding: 2rem;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    transition: all 0.5s ease-in-out;
-}
-
-.year-memories.active {
-    display: flex;
-    animation: fadeIn 0.8s ease-in-out;
-}
-
-/* Coming Soon Placeholder */
-.coming-soon .photo-placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    animation: pulse 2s infinite;
-}
-
-/* Update existing staggered animation for year sections */
-.year-collage:nth-child(1) { animation-delay: 0.2s; }
-.year-collage:nth-child(2) { animation-delay: 0.4s; }
-.year-collage:nth-child(3) { animation-delay: 0.6s; }
-
-/* Apply fade-in animation to year collages */
-.year-collage {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s forwards;
-}
-
-.volume-slider-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-
-.volume-slider {
-    width: 100px;
-    height: 5px;
-    background: #d3d3d3;
-    outline: none;
-    border-radius: 5px;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--primary);
-    cursor: pointer;
-}
-
-.volume-slider::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--primary);
-    cursor: pointer;
-}
-
-.volume-level {
-    font-size: 0.8rem;
-    color: var(--dark);
-}
-
-        @media (max-width: 1024px) {
-            .gallery-item {
-                flex: 0 0 calc(50% - 1.5rem);
-                max-width: calc(50% - 1.5rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .gallery-item {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .proposal-text {
-                font-size: 2rem;
-            }
-            
-            .response-btn {
-                font-size: 1.2rem;
-                padding: 0.8rem 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Custom cursor -->
@@ -1088,7 +47,6 @@
         <p class="typing-text">Hawwo woob woob!</p>
         <p>I hash planned sumfing special fow ush!</p>
         <div class="heart" id="landing-heart" onclick="heartClickEffect(event)">❤️</div>
-        <p class="click-hint">Click the heart to continue!</p>
         <div class="love-meter">
             <div class="love-fill" id="love-fill"></div>
             <div class="love-percentage" id="love-percentage">0%</div>
@@ -1097,8 +55,8 @@
     
     <!-- Date Options -->
     <section id="date-options" class="parallax">
-        <h1>Choose Our Adventure</h1>
-        <p>I hash planned sum activities that I'd layk to bwing you on fow our special day my love! (I ish paying fow dish special occassion! I insist RAWRRR!)</p>
+        <h1>Choose Ouw Next Adventuwe</h1>
+        <p class = "second-caption">I hash planned sum activities that I'd layk to bwing you on fow our special day my love! (I ish paying fow dish special occassion! I insist RAWRRR!)</p>
         
         <div class="date-cards">
             <div class="date-card" onmousemove="tiltCard(event, this)" onmouseleave="resetTilt(this)">
@@ -2107,19 +1065,19 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="memory-container">
         <div class="memory-item">
             <img src="sg1/first-taym.jpg" alt="First Meeting" class="photo">
-            <p>Woobi's fiwsh taym in sg! (alsho our fiwsh taym meeting irl!) 👩‍❤️‍💋‍👨</p>
+            <p class = "initial-caption">Woobi's fiwsh taym in sg! (alsho our fiwsh taym meeting irl!) 👩‍❤️‍💋‍👨</p>
             <button class="btn memory-btn" onclick="showMemoryDetail('first-taym')">Shee mawr photos</button>
         </div>
         
         <div class="memory-item">
             <img src="sg2/coolwabi.jpg" alt="Second Visit" class="photo">
-            <p>Woob's second time in sg! ❤️</p>
+            <p class = "initial-caption">Woob's second time in sg! ❤️</p>
             <button class="btn memory-btn" onclick="showMemoryDetail('second-taym')">Shee Mawr Photos</button>
         </div>
         
         <div class="memory-item">
             <img src="sg3/goldenhouw.jpg" alt="Third Visit" class="photo">
-            <p>Wabi's third time in sg heheh (tenksh fow alwaysh coming to shee me) ❤️❤️</p>
+            <p class = "initial-caption">Wabi's third time in sg heheh (tenksh fow alwaysh coming to shee me) ❤️❤️</p>
             <button class="btn memory-btn" onclick="showMemoryDetail('third-taym')">Shee Mawr Photos</button>
         </div>
     </div>
@@ -2137,26 +1095,26 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="memory-container">
         <div class="memory-item">
             <img src="bohol1/flight.jpg" alt="First Bohol Trip" class="photo">
-            <p>Fiwsh taym flying ovew to shee wabi!! (fwish taym evew flying actuawwy)❤️✈️ </p>
+            <p class = "initial-caption">Fiwsh taym flying ovew to shee wabi!! (fwish taym evew flying actuawwy)❤️✈️ </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('bohol')">Shee Mawr Photos</button>
         </div>
         
         <div class="memory-item">
             <img src="sg4/feed.jpg" alt="Fourth SG Visit" class="photo">
-            <p>Woobi in sg again!! hehehe</p>
+            <p class = "initial-caption">Woobi in sg again!! hehehe</p>
             <button class="btn memory-btn" onclick="showMemoryDetail('fourth-taym')">Shee Mawr Photos</button>
         </div>
         
         <div class="memory-item">
             <img src="sg5/pickup.jpg" alt="Fifth SG Visit" class="photo">
-            <p>my wabi visitsh me again!❤️ </p>
+            <p class = "initial-caption">my wabi visitsh me again!❤️ </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('fifth-taym')">Shee mawr photos</button>
         </div>
 
         <div class="memory-container">
             <div class="memory-item">
             <img src="bohol2/cover.jpg" alt="Second Bohol Trip" class="photo">
-            <p>Wabi 1 coming bacc to Bohol!🥥✈️❤️🏝 </p>
+            <p class = "initial-caption">Wabi 1 coming bacc to Bohol!🥥✈️❤️🏝 </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('bohol2')">Shee mawr photos</button>
         </div>
     </div>
@@ -2174,37 +1132,43 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- You can add more 2024 memories here as they happen -->
         <div class="memory-item">
             <img src="sg6/wamen.jpg" alt="Sixth SG visit" class="photo">
-            <p>my wabi visitsh me again!❤️ </p>
+            <p class = "initial-caption">my wabi visitsh me again!❤️ </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('sixth-taym')">Shee mawr photos</button>
         </div>
 
         <div class="memory-item">
             <img src="thailand/cover.jpg" alt="Thailand" class="photo">
-            <p>Thailand twip wid woobi's famiwy! </p>
+            <p class = "initial-caption">Thailand twip wid woobi's famiwy! </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('thailand')">Shee mawr photos</button>
         </div>
 
         <div class="memory-item">
             <img src="tswift/conc1.jpg" alt="TSwift" class="photo">
-            <p>Taylor swift week!! </p>
+            <p class = "initial-caption">Taylor swift week!! </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('tswift')">Shee mawr photos</button>
         </div>
 
         <div class="memory-item">
             <img src="sg7/2.jpg" alt="7" class="photo">
-            <p>Wabi's post gwad twip!</p>
+            <p class = "initial-caption">Wabi's post gwad twip!</p>
             <button class="btn memory-btn" onclick="showMemoryDetail('seventh')">Shee mawr photos</button>
         </div>
 
         <div class="memory-item">
             <img src="vietnam/2.jpg" alt="7" class="photo">
-            <p>HCMC twip! 🇻🇳 </p>
+            <p class = "initial-caption">HCMC twip! 🇻🇳✈️ </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('vietnam')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="danang/0.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Danang! </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('danang')">Shee mawr photos</button>
         </div>
 
         <div class="memory-item coming-soon">
             <div class="photo-placeholder">Coming Soon</div>
-            <p>More adventures to come in 2024! 💕</p>
+            <p class = "initial-caption">More adventures to come in 2024! 💕</p>
         </div>
     </div>
 </div>
@@ -2233,80 +1197,86 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Initial Memory Lane (before date options) -->
     <section id="initial-memory-lane">
         <h1>Our Journey togethew so far!</h1>
-        <p>Befowe anyfing else, lesh take a stroll down the memowy lane da wabis hash had togethew!</p>
-       
+        <p class = "second-caption">Befowe anyfing else, lesh take a stroll down the memowy lane da wabis hash had togethew!</p>
+        <button class="btn btn-3d" onclick="showSection('landing')">Back to Home</button>
         <div class="memory-container">
             <div class="memory-item">
                 <img src="sg1/first-taym.jpg" alt="First Date" class="photo">
-                <p>Woobi's fiwsh taym in sg! (alsho our fiwsh taym meeting irl!) 👩‍❤️‍💋‍👨</p>
+                <p class = "initial-caption">Woobi's fiwsh taym in sg! (alsho our fiwsh taym meeting irl!) 👩‍❤️‍💋‍👨</p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('first-taym')">Shee mawr photos</button>
             </div>
            
             <div class="memory-item">
                 <img src="sg2/coolwabi.jpg" alt="First Date" class="photo">
-                <p>Woob's second time in sg! ❤️</p>
+                <p class = "initial-caption">Woob's second time in sg! ❤️</p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('second-taym')">Shee Mawr Photos</button>
             </div>
            
             <div class="memory-item">
                 <img src="sg3/goldenhouw.jpg" alt="First Date" class="photo">
-                <p>Wabi's third time in sg heheh (tenksh fow alwaysh coming to shee me) ❤️❤️</p>
+                <p class = "initial-caption">Wabi's third time in sg heheh (tenksh fow alwaysh coming to shee me) ❤️❤️</p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('third-taym')">Shee Mawr Photos</button>
             </div>
            
             <div class="memory-item">
                 <img src="bohol1/flight.jpg" alt="First Date" class="photo">
-                <p>Fiwsh taym flying ovew to shee wabi!! (fwish taym evew flying actuawwy)❤️✈️ </p>
+                <p class = "initial-caption">Fiwsh taym flying ovew to shee wabi!! (fwish taym evew flying actuawwy)❤️✈️ </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('bohol')">Shee Mawr Photos</button>
             </div>
            
             <div class="memory-item">
                 <img src="sg4/feed.jpg" alt="First Date" class="photo">
-                <p>Woobi in sg again!! hehehe</p>
+                <p class = "initial-caption">Woobi in sg again!! hehehe</p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('fourth-taym')">Shee Mawr Photos</button>
             </div>
            
             <div class="memory-item">
                 <img src="sg5/pickup.jpg" alt="First Date" class="photo">
-                <p>my wabi visitsh me again!❤️ </p>
+                <p class = "initial-caption">my wabi visitsh me again!❤️ </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('fifth-taym')">Shee mawr photos</button>
             </div>
     
             <div class="memory-item">
                 <img src="bohol2/cover.jpg" alt="First Date" class="photo">
-                <p>Wabi 1 coming bacc to Bohol!🥥✈️❤️🏝 </p>
+                <p class = "initial-caption">Wabi 1 coming bacc to Bohol!🥥✈️❤️🏝 </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('bohol2')">Shee mawr photos</button>
             </div>
 
             <div class="memory-item">
                 <img src="sg6/wamen.jpg" alt="First Date" class="photo">
-                <p>My loverrrrrr visiting me again!!! </p>
+                <p class = "initial-caption">My loverrrrrr visiting me again!!! </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('sixth-taym')">Shee mawr photos</button>
             </div>
 
             <div class="memory-item">
                 <img src="thailand/cover.jpg" alt="Thailand" class="photo">
-                <p>Thailand twip wid woobi's famiwy! </p>
+                <p class = "initial-caption">Thailand twip wid woobi's famiwy! </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('thailand')">Shee mawr photos</button>
             </div>
     
             <div class="memory-item">
                 <img src="tswift/conc1.jpg" alt="TSwift" class="photo">
-                <p>Taylor swift week!! </p>
+                <p class = "initial-caption">Taylor swift week!! </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('tswift')">Shee mawr photos</button>
             </div>
     
             <div class="memory-item">
                 <img src="sg7/2.jpg" alt="7" class="photo">
-                <p>Wabi's post gwad twip!</p>
+                <p class = "initial-caption">Wabi's post gwad twip!</p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('seventh')">Shee mawr photos</button>
             </div>
     
             <div class="memory-item">
                 <img src="vietnam/2.jpg" alt="7" class="photo">
-                <p>HCMC twip! 🇻🇳 </p>
+                <p class = "initial-caption">HCMC twip! 🇻🇳 </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('vietnam')">Shee mawr photos</button>
             </div>
+        </div>
+
+        <div class="memory-item">
+            <img src="danang/0.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Danang and Hoi An! ✈️🏮 </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('danang')">Shee mawr photos</button>
         </div>
         
         <button class="btn" onclick="showSection('date-options')">Naow lesh plan our next Adventuwe!</button>
@@ -2345,7 +1315,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="first-taym" class="memory-detail-page">
         <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
         <h1>Our first taym meeting!</h1>
-        <p>Woobi's fiwsh taym in sg ❤️</p>
+        <p class = "second-caption">Woobi's fiwsh taym in sg ❤️</p>
         
         <div class="gallery">
             <div class="gallery-item">
@@ -2381,7 +1351,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="second-taym" class="memory-detail-page">
         <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
         <h1>Wabi's fiwsh solo trip to sg</h1>
-        <p>Woobi's 2nd time in sg!!</p>
+        <p class = "second-caption">Woobi's 2nd time in sg!!</p>
         
         <div class="gallery">
             <div class="gallery-item">
@@ -2440,7 +1410,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="third-taym" class="memory-detail-page">
         <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
         <h1>My baby's thiwd taym in sg!!</h1>
-        <p>My baby looksh sho cooooooot!!!</p>
+        <p class = "second-caption">My baby looksh sho cooooooot!!!</p>
         
         <div class="gallery">
             <div class="gallery-item">
@@ -2508,7 +1478,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <section id="bohol" class="memory-detail-page">
         <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
         <h1>My fiwsh twip to Bohol!!!</h1>
-        <p>When I tooky my fiwsh flight evew to shee wabi!!</p>
+        <p class = "second-caption">When I tooky my fiwsh flight evew to shee wabi!!</p>
         
         <div class="gallery">
             <div class="gallery-item">
@@ -3323,6 +2293,221 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="gallery-item">
             <img src="vietnam/22.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
             <div class="gallery-caption">off to danang!!</div>
+        </div>
+        
+    </div>
+</section>
+
+<section id="danang" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <h1>Danang and Hoi An 🇻🇳✈️🏮!</h1>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="danang/1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">fiwsh meal in danang! wash soopew shmol compawed to hcmc </div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/0.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and my baby at my khe beach!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/3.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">Parasailing wid wabi!! I wash sho afwaid of letting go 🪂</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/2.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">Shwim shwim!! my fiwsh taym being able to shwim on my bacc heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">Pho fow bwekky befowe we set out fow adventuwe! </div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/3.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">fiwsh stop at giant buddha!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/4.jpg" alt="Description of photo" style="width: 100%; height: auto; object-fit: contain; border-radius: 10px;">
+            <div class="gallery-caption">dawk ash fwak</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/11.jpg" alt="Description of photo" style="width: 100%; height: auto; object-fit: contain; border-radius: 10px;">
+            <div class="gallery-caption">❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/5.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">da woobi covewing up becosh ish soopa hawt laa</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/6.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">my baby❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/7.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">shelfee taym wid buddha!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/8.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">next stop ish da cave in marble mountain!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/9.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">my woob woob sho coot </div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/10.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">my tuwn!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/11 (2).jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">shteal my hat fow wat la!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/12.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">on da way to bana hills!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/13.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">awwived at sunwowld! ft. woob woob and mama</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/17.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">wiww nevew get tiwed of dish view</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/14.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">cable caw taym!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/15.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">I wemembew being gwumpy becosh couldnt getsh good pic becosh sho cwowded</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/16.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">da view!!🏔</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/18.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">chish!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/19.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">woob with flowersh!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/20.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">posing wid kopi!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/22.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">da wabi and hew kopi</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/23.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">shelfee!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/21.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">weached da top!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/24.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">bacc down!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/25 (2).jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">otw to Hoi An!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/29.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">bikini bottom buwgew!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/29.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">da egg wash too cooked XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/25 (3).jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">Sunset!!☀️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob woob at Hoi An nayt mawket</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/market.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption"></div> 
+        </div>
+        <div class="gallery-item">
+            <img src="danang/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Shelfee!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/27.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">make a wish lantewn!</div>
+        </div>
+
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/skem.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">HAHAHA we got skemmed laa!!! it wash jush sum sticky ash shiet</div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="danang/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob woob posing fow boat wide!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/wish.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">da wabi filming me and mama making a wish!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="danang/boat.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">boat ride!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/boat.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">heheh my baby looks kool</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/mama.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da two mosht impowtant women of my layf</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/31.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">korean fud da next day becosh bikini bottom wash nawwwt open and thewe wash nyo powew</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/32.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi posing wid yewwow table and chaiwsh!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bacc in HCMC! poulet again heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">chican and mashed potata!!!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="danang/35.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi waiting fow me to take pic of dessewt sho can myanch XD</div>
         </div>
         
     </div>
