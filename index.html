@@ -315,7 +315,7 @@
             <div class="heart" onclick="createRainbowHearts()">❤️</div>
         </div>
         
-        <button class="btn" onclick="showSection('landing'); playButtonSound();">Start Over</button>
+        <button class="btn btn-3d" onclick="showSection('landing')">Start Over</button>
     </section>
     
     <!-- JavaScript for interactive elements -->
@@ -764,6 +764,110 @@
                 }
             }, 1500);
         }
+
+        // Function to add date bubbles to all memories
+document.addEventListener('DOMContentLoaded', function() {
+    // Date data for all memories
+    const memoryDates = {
+        // Initial memory lane
+        'first-taym': 'May 2022',
+        'second-taym': 'August 2022',
+        'third-taym': 'November/December 2022',
+        'bohol': 'March 2023',
+        'fourth-taym': 'May 2023',
+        'fifth-taym': 'July/August 2023',
+        'bohol2': 'October 2023',
+        'sixth-taym': 'January 2024',
+        'thailand': 'February 2024',
+        'tswift': 'March 2024',
+        'seventh': 'June 2024',
+        'vietnam': 'June 2024',
+        'danang': 'June 2024',
+        'sg8': 'June 2024',
+        'krabi': 'July 2024',
+        
+        // Additional memories in memory lane
+        'first-kiss': 'Summer 2022',
+        'anniversary': 'Spring 2023',
+        'support': 'Fall 2023',
+        'celebration': 'Winter 2023',
+        'roadtrip': 'Spring 2024'
+    };
+    
+    // Add date bubbles to initial memory lane
+    const initialMemoryItems = document.querySelectorAll('#initial-memory-lane .memory-item');
+    initialMemoryItems.forEach(item => {
+        // Find which memory this is by checking the onclick attribute of its button
+        const button = item.querySelector('.memory-btn');
+        if (button) {
+            const onclickText = button.getAttribute('onclick');
+            // Extract memory ID from the onclick text
+            const matches = onclickText.match(/showMemoryDetail\('(.+?)'\)/);
+            if (matches && matches[1]) {
+                const memoryId = matches[1];
+                const date = memoryDates[memoryId];
+                
+                if (date) {
+                    // Create date bubble
+                    const dateBubble = document.createElement('div');
+                    dateBubble.className = 'date-bubble';
+                    dateBubble.textContent = date;
+                    
+                    // Insert at the beginning of the memory item
+                    item.insertBefore(dateBubble, item.firstChild);
+                }
+            }
+        }
+    });
+    
+    // Add date bubbles to year-based memories
+    const yearSections = ['year-2022', 'year-2023', 'year-2024', 'year-2025'];
+    yearSections.forEach(yearId => {
+        const memoryItems = document.querySelectorAll(`#${yearId} .memory-item`);
+        memoryItems.forEach(item => {
+            // Similar approach as above
+            const button = item.querySelector('.memory-btn');
+            if (button) {
+                const onclickText = button.getAttribute('onclick');
+                const matches = onclickText.match(/showMemoryDetail\('(.+?)'\)/);
+                if (matches && matches[1]) {
+                    const memoryId = matches[1];
+                    const date = memoryDates[memoryId];
+                    
+                    if (date) {
+                        // For year sections, just show the month
+                        const month = date.split(' ')[0];
+                        
+                        // Create date bubble
+                        const dateBubble = document.createElement('div');
+                        dateBubble.className = 'date-bubble';
+                        dateBubble.textContent = month;
+                        
+                        // Insert at the beginning of the memory item
+                        item.insertBefore(dateBubble, item.firstChild);
+                    }
+                }
+            }
+        });
+    });
+    
+    // Add date headers to memory detail pages
+    for (const [memoryId, date] of Object.entries(memoryDates)) {
+        const detailPage = document.getElementById(memoryId);
+        if (detailPage && detailPage.classList.contains('memory-detail-page')) {
+            const heading = detailPage.querySelector('h1');
+            if (heading) {
+                // Create date header
+                const dateHeader = document.createElement('div');
+                dateHeader.className = 'memory-header-date';
+                dateHeader.textContent = date;
+                
+                // Insert after the heading
+                heading.parentNode.insertBefore(dateHeader, heading.nextSibling);
+            }
+        }
+    }
+});
         
         // Show proposal section
         function showProposalSection() {
@@ -1049,6 +1153,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="tswift/awwival.jpg" alt="2024 Memory" class="collage-img collage-img-3">
                 <img src="sg7/0.jpg" alt="2024 Memory" class="collage-img collage-img-4">
                 <img src="vietnam/2.jpg" alt="2024 Memory" class="collage-img collage-img-5">
+                <img src="krabi/0.jpg" alt="2024 Memory" class="collage-img collage-img-6">
             </div>
             <div class="year-caption">New yeaw new memowiesh!!</div>
         </div>
@@ -1127,7 +1232,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- 2024 Memories Section -->
 <section id="year-2024" class="year-memories">
     <h1>Our 2024 Memories 🏝️</h1>
-    <p>Making new memories!</p>
+    <p>Dish yeaw wash full of memowiesh togethew!</p>
     <div class="memory-container">    
         <!-- You can add more 2024 memories here as they happen -->
         <div class="memory-item">
@@ -1166,10 +1271,18 @@ document.addEventListener('DOMContentLoaded', function() {
             <button class="btn memory-btn" onclick="showMemoryDetail('danang')">Shee mawr photos</button>
         </div>
 
-        <div class="memory-item coming-soon">
-            <div class="photo-placeholder">Coming Soon</div>
-            <p class = "initial-caption">More adventures to come in 2024! 💕</p>
+        <div class="memory-item">
+            <img src="sg8/3.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Bacc in sg! (nawt fow long) </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg8')">Shee mawr photos</button>
         </div>
+
+        <div class="memory-item">
+            <img src="krabi/0.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Da wabis venture on to Krabi!🪸🏔🏝🐠🇹🇭 </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('krabi')">Shee mawr photos</button>
+        </div>
+
     </div>
 </div>
 <div class="back-button-container">
@@ -1182,10 +1295,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <h1>Our 2025 Memories 🏝️</h1>
     <p>New yeaw new memowiesh!!</p>
     <div class="memory-container">    
-        <!-- You can add more 2025 memories here as they happen -->
+
         <div class="memory-item coming-soon">
             <div class="photo-placeholder">Coming Soon</div>
-            <p>More adventures to come in 2024! 💕</p>
+            <p>More adventures to come in 2025! 💕</p>
         </div>
     </div>
 </div>
@@ -1271,13 +1384,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class = "initial-caption">HCMC twip! 🇻🇳 </p>
                 <button class="btn memory-btn" onclick="showMemoryDetail('vietnam')">Shee mawr photos</button>
             </div>
-        </div>
 
         <div class="memory-item">
             <img src="danang/0.jpg" alt="7" class="photo">
             <p class = "initial-caption">Danang and Hoi An! ✈️🏮 </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('danang')">Shee mawr photos</button>
         </div>
+
+        <div class="memory-item">
+            <img src="sg8/3.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Bacc in sg! (nawt fow long) </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg8')">Shee mawr photos</button>
+        </div>
+        <div class="memory-item">
+            <img src="krabi/0.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Da wabis venture on to Krabi!🪸🏔🏝🐠🇹🇭 </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('krabi')">Shee mawr photos</button>
+        </div>
+
+
+    </div>    
         
         <button class="btn" onclick="showSection('date-options')">Naow lesh plan our next Adventuwe!</button>
     </section>
@@ -1343,6 +1469,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <source src="sg1/wifey.mp4" type="video/mp4">
                 </video>
                 <div class="gallery-caption">da wabi calling me wifey rawr!</div>
+            </div>
+            <div class="gallery-item">
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="sg1/necklace.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">Putting on necklaces fow wabi!!😌</div>
             </div>
         </div>
     </section>
@@ -2298,219 +2430,329 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
 
-<section id="danang" class="memory-detail-page">
+<section id="sg8" class="memory-detail-page">
     <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
-    <h1>Danang and Hoi An 🇻🇳✈️🏮!</h1>
+    <h1>Bacc in sg!</h1>
     
     <div class="gallery">
         <div class="gallery-item">
-            <img src="danang/1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">fiwsh meal in danang! wash soopew shmol compawed to hcmc </div>
+            <img src="sg8/1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">Bacc in sg aftuw vietnam! taym fow sum homecooked fwied chican wingsh!🍗</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/0.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">me and my baby at my khe beach!</div>
-        </div>
-        <div class="gallery-item">
-            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/3.mp4" type="video/mp4">
-            </video>
-            <div class="gallery-caption">Parasailing wid wabi!! I wash sho afwaid of letting go 🪂</div>
+            <img src="sg8/2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da wabi made da besht mashed potatoesh I hash evew eaten! yum yum in my tum tum🥔</div>
         </div>
         <div class="gallery-item">
             <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/2.mp4" type="video/mp4">
+                <source src="sg8/4.mp4" type="video/mp4">
             </video>
-            <div class="gallery-caption">Shwim shwim!! my fiwsh taym being able to shwim on my bacc heheh</div>
+            <div class="gallery-caption">woob woob made cookiesh subway styleee!🍪</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">Pho fow bwekky befowe we set out fow adventuwe! </div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/3.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">fiwsh stop at giant buddha!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/4.jpg" alt="Description of photo" style="width: 100%; height: auto; object-fit: contain; border-radius: 10px;">
-            <div class="gallery-caption">dawk ash fwak</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/11.jpg" alt="Description of photo" style="width: 100%; height: auto; object-fit: contain; border-radius: 10px;">
-            <div class="gallery-caption">❤️</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/5.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">da woobi covewing up becosh ish soopa hawt laa</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/6.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">my baby❤️</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/7.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">shelfee taym wid buddha!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/8.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">next stop ish da cave in marble mountain!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/9.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">my woob woob sho coot </div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/10.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">my tuwn!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/11 (2).jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">shteal my hat fow wat la!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/12.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">on da way to bana hills!!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/13.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">awwived at sunwowld! ft. woob woob and mama</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/17.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">wiww nevew get tiwed of dish view</div>
+            <img src="sg8/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob filing a complain thru insta about hashing nyo poopi stool heheh</div>
         </div>
         <div class="gallery-item">
             <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/14.mp4" type="video/mp4">
+                <source src="sg8/5.mp4" type="video/mp4">
             </video>
-            <div class="gallery-caption">cable caw taym!</div>
+            <div class="gallery-caption">wash twyna catch woob woob red handed but inshtead woob woob caught me wecowding</div>
+        </div>
+    </div>    
+</section>
+
+
+<section id="krabi" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <h1>Krabi!! 🐠🇹🇭</h1>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="krabi/1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">Awwived in kwabi!!🇹🇭 </div>
         </div>
         <div class="gallery-item">
-            <img src="danang/15.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">I wemembew being gwumpy becosh couldnt getsh good pic becosh sho cwowded</div>
+            <img src="krabi/2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at all da limestone mountainshh 🏔 </div>
         </div>
         <div class="gallery-item">
-            <img src="danang/16.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">da view!!🏔</div>
+            <img src="krabi/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">golden houw on da limestone mountain (looked better in person) </div>
         </div>
         <div class="gallery-item">
-            <img src="danang/18.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <img src="krabi/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Ao nang beach! </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Setting out to phi phi island tours!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/6.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">Woob woob insisted fow me to pose fow pictuwe </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/7.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">naow my tuwn to takey pic of woob woob! </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/8.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">awwived at maya bay! but wabi wash shy to takey pic becosh of crowd </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/9.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">made da wabi pose fow wan! </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/10.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">tuwquoise watew!! </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/11.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">fwacking touwists wuining our experience! </div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/12.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">maya bay! </div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+            <source src="krabi/15.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">meoww! (they can indeed hear you)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/13.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">woob woob tweading next to me XD</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="krabi/14.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">showcasing da view</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da besht view la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">phi phi island!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="krabi/18.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">coconut ayskweemm!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/19.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/22.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shelfee at da boat!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/24.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">gotsh da crew to takey pic fow ush</div>
+        </div>
+         <div class="gallery-item">
+            <img src="krabi/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie woob!</div>
+        </div>
+         <div class="gallery-item">
+            <img src="krabi/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">when mama wanted to takey pic becosh she felt naysh</div>
+        </div>
+         <div class="gallery-item">
+            <img src="krabi/27.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bwekky!</div>
+        </div>
+         <div class="gallery-item">
+            <img src="krabi/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">ao nang night mawket!</div>
+        </div>
+         <div class="gallery-item">
+            <img src="krabi/29.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">baked potata!!</div>
+        </div>
+         <div class="gallery-item">
+            <img src="krabi/30.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mooooochiiiiiii nyam nyam</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="krabi/31.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">hashing 7-11 sammich befowe new day of adventuwe!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/32.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">setting out on adventure!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at my cootie baby</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and my cootie baby!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="krabi/35.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">monki hashin potato chipsh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/35.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">onto da next destination!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/36.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">awwived at fiwsh snorkelling awea!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/37.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">when da woob woob wash scawed becosh she saw a sign and thot thewe wash jelly feesh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/38.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">asked da woob woob to smile fow me and u did!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/39.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">nyo caption needed heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/40.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wan of my fav picsh of ush</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/41.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">setting off to next destination!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/42.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">snorkelling taym!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="krabi/43.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">me and woob woob jumping in togethew!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/44.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and woob woob at lasht destination laa</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/45.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/47.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">love</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/46.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">you</div>
+        </div>>
+        <div class="gallery-item">
+            <img src="krabi/48.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">heading bacc!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/49.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Khaothong hill!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/50.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob caught mama off guard XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="krabi/51.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
             <div class="gallery-caption">chish!</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/19.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">woob with flowersh!</div>
+            <img src="krabi/52.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/20.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">posing wid kopi!</div>
+            <img src="krabi/53.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
         </div>
         <div class="gallery-item">
-            <img src="danang/22.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">da wabi and hew kopi</div>
+            <img src="krabi/54.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wuvv!</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/23.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">shelfee!</div>
+            <img src="krabi/55 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">toilet view!</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/21.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">weached da top!</div>
+            <img src="krabi/55.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">asked da woob to posesh!</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/24.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">bacc down!</div>
+            <img src="krabi/56.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">myanch myanch!</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/25 (2).jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">otw to Hoi An!</div>
+            <img src="krabi/57.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi looking at da view while i looky at you</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/29.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">bikini bottom buwgew!</div>
+            <img src="krabi/58.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunset!</div>
         </div>
         <div class="gallery-item">
-            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/29.mp4" type="video/mp4">
-            </video>
-            <div class="gallery-caption">da egg wash too cooked XD</div>
+            <img src="krabi/59.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
         </div>
         <div class="gallery-item">
-            <img src="danang/25 (3).jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-            <div class="gallery-caption">Sunset!!☀️</div>
+            <img src="krabi/60.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
         </div>
         <div class="gallery-item">
-            <img src="danang/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">da woob woob at Hoi An nayt mawket</div>
+            <img src="krabi/61.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
         </div>
         <div class="gallery-item">
-            <img src="danang/market.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption"></div> 
+            <img src="krabi/62.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">new day!</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">Shelfee!</div>
+            <img src="krabi/63.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob dwinky my tea!</div>
         </div>
         <div class="gallery-item">
-            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/27.mp4" type="video/mp4">
-            </video>
-            <div class="gallery-caption">make a wish lantewn!</div>
-        </div>
-
-        <div class="gallery-item">
-            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/skem.mp4" type="video/mp4">
-            </video>
-            <div class="gallery-caption">HAHAHA we got skemmed laa!!! it wash jush sum sticky ash shiet</div>
-        </div>
-        
-        <div class="gallery-item">
-            <img src="danang/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">da woob woob posing fow boat wide!!</div>
+            <img src="krabi/64.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">look alike look alike!</div>
         </div>
         <div class="gallery-item">
-            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/wish.mp4" type="video/mp4">
-            </video>
-            <div class="gallery-caption">da wabi filming me and mama making a wish!</div>
+            <img src="krabi/65.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bacc at Khaothong hill again!</div>
         </div>
         <div class="gallery-item">
-            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
-                <source src="danang/boat.mp4" type="video/mp4">
-            </video>
-            <div class="gallery-caption">boat ride!!</div>
+            <img src="krabi/66.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">welp nub sunset today la</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/boat.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">heheh my baby looks kool</div>
+            <img src="krabi/66 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">at lish i hash dish view</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/mama.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">da two mosht impowtant women of my layf</div>
+            <img src="krabi/67.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob eating mochi and getting da powdew evewiwhew SHOOO COOOOT</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/31.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">korean fud da next day becosh bikini bottom wash nawwwt open and thewe wash nyo powew</div>
+            <img src="krabi/68.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">hashing diarrhea of my life fwom khaothong hill fud! (peep me ushing poopi stool becosh wabi asked me to)</div>
         </div>
         <div class="gallery-item">
-            <img src="danang/32.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">wabi posing wid yewwow table and chaiwsh!</div>
+            <img src="krabi/69.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">heading bacc to sg naa</div>
         </div>
-        <div class="gallery-item">
-            <img src="danang/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">bacc in HCMC! poulet again heheh</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">chican and mashed potata!!!!</div>
-        </div>
-        <div class="gallery-item">
-            <img src="danang/35.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
-            <div class="gallery-caption">wabi waiting fow me to take pic of dessewt sho can myanch XD</div>
-        </div>
-        
-    </div>
+    </div>    
 </section>
 
     
