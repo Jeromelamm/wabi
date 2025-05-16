@@ -1113,6 +1113,82 @@ color: var(--dark);
     background-color: #fff9f9;
 }
 
+/* Date Bubble Styles */
+.date-bubble {
+    background-color: var(--secondary);
+    color: white;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 5;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-align: center;
+    min-width: 120px;
+}
+
+.date-bubble:before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--secondary);
+}
+
+.memory-item:hover .date-bubble {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background-color: var(--primary);
+}
+
+.memory-item:hover .date-bubble:before {
+    border-top-color: var(--primary);
+}
+
+/* Year section date bubbles */
+.year-memories .date-bubble {
+    margin: -0.5rem auto 0.5rem;
+    background-color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.year-memories .date-bubble:before {
+    border-top-color: var(--primary);
+}
+
+.year-memories .memory-item:hover .date-bubble {
+    background-color: var(--secondary);
+}
+
+.year-memories .memory-item:hover .date-bubble:before {
+    border-top-color: var(--secondary);
+}
+
+/* Memory detail page date header */
+.memory-header-date {
+    background-color: var(--secondary);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
 @media (max-width: 1024px) {
     .gallery-item {
         flex: 0 0 calc(50% - 1.5rem);
