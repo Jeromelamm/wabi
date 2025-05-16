@@ -322,7 +322,32 @@
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modal-img">
     </div>
+
+
+<script>
+function checkPassword() {
+    const password = document.getElementById('password').value;
+    console.log("Password entered:", password); // Debugging line
     
+    if (password === '18/08/2021' || password === '18/8/2021') {
+        alert("Correct password!"); // For testing
+        
+        // Show special message section (adjust these IDs to match your actual HTML)
+        document.getElementById('special-section').classList.remove('active');
+        document.getElementById('special-message').classList.add('active');
+    } else {
+        alert("Incorrect password"); // For testing
+        
+        // Show error message
+        const errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            errorMessage.style.display = 'block';
+        }
+    }
+}
+</script>
+
+
 <script src="main.js"></script>
 
 <script src="image-enlarger.js"></script>
