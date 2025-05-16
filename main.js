@@ -697,6 +697,56 @@ function updateInitialNavigation() {
     btnContainer.appendChild(yearsButton);
 }
 
+
+ // Check password function
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            // Check if password is correct (matching 18/08/2021)
+            if (password === '18/08/2021' || password === '18/8/2021') {
+                // Show the special message section
+                document.getElementById('special-section').classList.remove('active');
+                document.getElementById('special-message').classList.add('active');
+                
+                // Update current section
+                previousSection = currentSection;
+                currentSection = 'special-message';
+                
+                // Create celebratory confetti
+                createConfetti();
+                
+                // Play music
+                if (!isMusicPlaying) {
+                    toggleAudio();
+                }
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+                
+                // Shake the form to indicate error
+                const form = document.querySelector('.special-message-box');
+                form.style.animation = 'none';
+                setTimeout(() => {
+                    form.style.animation = 'shake 0.5s';
+                }, 10);
+            }
+        }
+        
+        // Add shake animation for incorrect password
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                    20%, 40%, 60%, 80% { transform: translateX(10px); }
+                }
+            </style>
+        `);
+
+
+        
+
 // Call this function when the page loads
 document.addEventListener('DOMContentLoaded', function() {
     // Other initialization code...
