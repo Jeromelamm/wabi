@@ -451,6 +451,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'sg8': 'June 2024',
         'krabi': 'July 2024',
         'sg9': 'August 2024',
+        'bangkok': 'August 2024',
+        'sg10': 'August 2024',
         
         // Additional memories in memory lane
         'first-kiss': 'Summer 2022',
@@ -745,7 +747,7 @@ function updateInitialNavigation() {
         `);
 
 
-        
+
 
 // Call this function when the page loads
 document.addEventListener('DOMContentLoaded', function() {
