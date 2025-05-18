@@ -413,7 +413,7 @@ function checkPassword() {
 <section id="year-selection" class="parallax">
     <h1>Our Journey Through The Years</h1>
     <p>Expwore our special memories year by year!</p>
-    
+    <button class="btn btn-3d" onclick="showSection('landing')">Back to Home</button>
     <div class="year-collages">
         <!-- 2022 Year Collage -->
         <div class="year-collage" onclick="showSection('year-2022')">
@@ -461,17 +461,19 @@ function checkPassword() {
             <div class="year-title">2025</div>
             <div class="collage-container">
                 <!-- Overlapping images create a collage effect -->
-                <img src="el-nido/5.jpg" alt="2024 Memory" class="collage-img collage-img-1">
-                <img src="thailand/cover.jpg" alt="2024 Memory" class="collage-img collage-img-2">
-                <img src="tswift/awwival.jpg" alt="2024 Memory" class="collage-img collage-img-3">
-                <img src="sg7/0.jpg" alt="2024 Memory" class="collage-img collage-img-4">
-                <img src="vietnam/2.jpg" alt="2024 Memory" class="collage-img collage-img-5">
+                <img src="el-nido/5.jpg" alt="2025 Memory" class="collage-img collage-img-1">
+                <img src="bohol3/24.jpg" alt="2025 Memory" class="collage-img collage-img-2">
+                <img src="sg13/1.jpg" alt="2025 Memory" class="collage-img collage-img-3">
+                <img src="hanoi/1.jpg" alt="2025 Memory" class="collage-img collage-img-4">
+                <img src="sapa/1.jpg" alt="2025 Memory" class="collage-img collage-img-5">
+                <img src="sg14/1.jpg" alt="2025 Memory" class="collage-img collage-img-6">
             </div>
             <div class="year-caption">New yeaw new memowiesh!!</div>
         </div>
     </div>
-    
-    <button class="btn btn-3d" onclick="showSection('landing')">Back to Home</button>
+    <p class = "second-caption">Thank you my love, for everything. I'll forever cherish our memories, I hope we'll be able to make more..someday maybe.❤️</p> 
+
+    <button class="btn glow-button" onclick="showSection('special-section')">Something from the bottom of my heart</button>
 </section>
 
 <!-- 2022 Memories Section -->
@@ -612,8 +614,20 @@ function checkPassword() {
             <p class = "initial-caption">Bacc in sg! </p>
             <button class="btn memory-btn" onclick="showMemoryDetail('sg10')">Shee mawr photos</button>
         </div>
+        <div class="memory-item">
+            <img src="sg11/9.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Bacc in sg! </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg11')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="sg12/31.jpg" alt="7" class="photo">
+            <p class = "initial-caption">My birthday with you</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg12')">Shee mawr photos</button>
+        </div>
 
     </div>
+    <p class = "second-caption">Thank you for filling my 2024 with love and happiness my love babi</p>
 </div>
 <div class="back-button-container">
     <button class="btn back-years-btn" onclick="showSection('year-selection')">Back to Years</button>
@@ -624,11 +638,40 @@ function checkPassword() {
 <section id="year-2025" class="year-memories">
     <h1>Our 2025 Memories 🏝️</h1>
     <p>New yeaw new memowiesh!!</p>
-    <div class="memory-container">    
+    <div class="memory-container"> 
+        
+        <div class="memory-item">
+            <img src="el-nido/5.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Wabi 1 comes ovew to ph again!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('el-nido')">Shee mawr photos</button>
+        </div>
+        
+        <div class="memory-item">
+            <img src="bohol3/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">wabis head bacc to bohol!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('bohol3')">Shee mawr photos</button>
+        </div>
 
-        <div class="memory-item coming-soon">
-            <div class="photo-placeholder">Coming Soon</div>
-            <p>Bohol 2025?</p>
+        <div class="memory-item">
+            <img src="sg13/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Reunited!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg13')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="hanoi/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">da wabis venture to Hanoi!!!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('hanoi')">Shee mawr photos</button>
+        </div>
+        <div class="memory-item">
+            <img src="sapa/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Sapa wid da woob woob heheh</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sapa')">Shee mawr photos</button>
+        </div>
+        <div class="memory-item">
+            <img src="sg14/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">I love you babi</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg14')">Shee mawr photos</button>
         </div>
     </div>
 </div>
@@ -750,8 +793,55 @@ function checkPassword() {
             <button class="btn memory-btn" onclick="showMemoryDetail('sg10')">Shee mawr photos</button>
         </div>
 
+        <div class="memory-item">
+            <img src="sg11/9.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Bacc in sg! </p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg11')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="sg12/31.jpg" alt="7" class="photo">
+            <p class = "initial-caption">My birthday with you</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg12')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="el-nido/5.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Wabi 1 comes over to ph again!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('el-nido')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="bohol3/24.jpg" alt="7" class="photo">
+            <p class = "initial-caption">wabis head bacc to bohol!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('bohol3')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="sg13/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Reunited!</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg13')">Shee mawr photos</button>
+        </div>
+
+        <div class="memory-item">
+            <img src="hanoi/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">da wabis venture to Hanoi!!! 🇻🇳</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('hanoi')">Shee mawr photos</button>
+        </div>
+        <div class="memory-item">
+            <img src="sapa/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">Sapa wid da woob woob heheh 🇻🇳</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sapa')">Shee mawr photos</button>
+        </div>
+        <div class="memory-item">
+            <img src="sg14/1.jpg" alt="7" class="photo">
+            <p class = "initial-caption">I love you babi</p>
+            <button class="btn memory-btn" onclick="showMemoryDetail('sg14')">Shee mawr photos</button>
+        </div>
+
 
     </div>    
+            <p class = "second-caption">Thank you my love, for everything. I'll forever cherish our memories.❤️</p> 
         <!-- NEW BUTTON: This button takes us to the special section with the password form -->
         <button class="btn glow-button" onclick="showSection('special-section')">Something from the bottom of my heart</button>
     </section>
@@ -2292,6 +2382,1571 @@ function checkPassword() {
         </div>
     </div>    
 </section>
+
+<section id="sg11" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <p class = "second-caption">Bacc in sg again!❤️</p>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="sg11/1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">picked up woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg11/2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sg spaghetti!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg11/3.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">da woob hewpy cooky!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg11/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob's fiwsh taym twying my shteak</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shteakkkk!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob fwish taym twying my fav ayam penyet!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob and hew teh peng</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/6 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shteak fix fow woob!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/7.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/8.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wamen!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg11/9.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and woob shapping</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg11/9(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg11/10.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">vwoom vwoom in mewcedes!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg11/11.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">bai bai woob 😢</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg11/12.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">nyo photogwaphy?! fuak dat!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg11/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bai bai wan</div>
+        </div>
+    </div>    
+</section>
+
+<section id="sg12" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <p class = "second-caption">Da woob woob coming ovew to sg fow my requested closuwe, thank you wan ❤️</p>
+    
+    <div class="gallery">
+
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/1.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">hawwo woobi!!</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="sg12/2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">ikea fow dinnew!!</div>
+        </div>
+
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/2.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">woob woob getting da ikea ayskwemm</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="sg12/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob doing da shweep</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/6.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">da woob woob climbing dish!!! i wash laffy laffy until it wash my tuwn XD</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/7.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">ayskwem twuck!!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/8.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">uncle ayskwem!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/9.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/10.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/11.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/12.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">I wemembew my woobi being sho happy evewitaym we had uncle ayskwem heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob shweeping sho weww la!</div> 
+        </div>
+                <div class="gallery-item">
+            <img src="sg12/14.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi sense went off dat i nawt in bed anymawr! sho gwabby da bolstew!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg12/15.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">naow takey up all da bed!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg12/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">i'm kim's sammgyuuuppp!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg12/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">when i owdewed ayskwem dessewt fow ush and it spilled on delivewy haiya</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg12/18.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi 1 taking litol wabi out fow da mawnin</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg12/19.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi 1 and litol wabi otw to do adam job!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/20.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">eating nub hk fud on jon's bday</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/21.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">may the tailgate games begin.</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/22.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob twying new glasshesh!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/23.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my cootie baby❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/24.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">duwian by da beach!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/24.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">I love you</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob kish kish?</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">kish!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/27.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob doesh da licky!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">chwishmash wondew land at gawdens by da bay</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/29.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob wid kopi pengggg!!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/30.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woobi layk kangawoo mama wid litol wabi while pwaying royal match</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/31.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shniff shniff!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg12/32.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">cootie</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">torigo!! i wemembew getting hangwy heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woobi twying out a bag she likey heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/35.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bag chack!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/36.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bacc view!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/38.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunset on my bday na</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/39.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/40.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="sg12/41.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mama and da sunset</div>
+        </div>
+    </div>
+    <p class = "second-caption">Thank you for giving me these two weeks my love.</p>    
+</section>
+
+<section id="el-nido" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <h1>Da woob woob coming ovew to sg fow my requested closuwe, thank you wan</h1>
+    
+    <div class="gallery">
+
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/1.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">wabi 1 awwived in cebu!</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="el-nido/2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">mang inasal!!!</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="el-nido/3.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">dunkin befowe flight!!</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="el-nido/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">awwived at puerto princesa!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shelfee taym!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shelfee befowe da towtuwe bus ride</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/7.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at da view thoo!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/8.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sun setting but ash i checked my fone, we were still 2 hrsh away haiya</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/9.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sho pwetty laa</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/10.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">woom touw aftuw checkin in!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/11.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">snipew!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/12.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">el nido beachh, i pwefew alona!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">seafood!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/13.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">seafud sho fwesh it shtill be moving</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/14.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">borgir meal!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/15.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">smash burger!!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/16.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">fiwsh snipew intewaction!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">new day!! setting out fow bweakfast befowe ouw fiwsh touw!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at da floofy cloudsh</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/17.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">vwooom! until i fawgawt my helmet XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at da floofy cloudsh</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/18.jpg" type="video/mp4">
+            </video>
+            <div class="gallery-caption">xiao xing!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/19.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">vwoom vwoom!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/20.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">entewing el nido town!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/20.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">look at dish view laa!!</div> 
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/21.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">el nido town!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/22 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bwekky!</div>
+        </div>
+            <div class="gallery-item">
+            <img src="el-nido/22.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wafflesh!</div>
+        </div>
+            <div class="gallery-item">
+            <img src="el-nido/23.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">uhmm dish looky kinda diwty XD</div>
+        </div>
+                <div class="gallery-item">
+            <img src="el-nido/24.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">setting out fow adventuwe!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="el-nido/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">fwacking indian taking up sho much leg space.</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/26.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">looky ash da watew getsh cleawew!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/27.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">weeee!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">fiwsh stop!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/29.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">waoawwww cleaw watewsh and wid wabi? cant beat that la</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/30.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">da watew sho cleaw da fuak!!!<div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/31.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">heheh my cootie wabi</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/32" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shelfee taym!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">touw guide tooky a pic fow ush!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at ush!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/34(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">kayaking bacc! woob woob naow in fwont seat</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/35.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shekwet lagoon</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/36.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob's tuwn!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/37.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/38.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/39.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/40.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/41.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I wuv yoo</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/42.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">fiwsh taym ushing finsh XD (I hadsh nyo idea haow to usesh heheh)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/43.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">samgyup fow dinnew!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/44.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">snipew!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/45.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">giving da petsh and scwatchesh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/46.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">healthy bweakfast!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/47.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">setting out fow a new day of adventuwe!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/48.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">weee!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/49.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">limestone fowmationsh!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/50.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shekwet town inshide?! (we later disembawked to pee HAHAH)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/51.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob hiding in da shade</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/52.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shekwet beach!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/53.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at dat naysh tuwquiose watewsh and limestone formationsh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/54.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">beach fow our lunch!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/55.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">lasht beach fow welak befowe heading bacc (mosht of da fotosh were losht on ur fone 😢)</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/56.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">heading bacc!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/57.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">mandatowy snipew playtaym</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/58.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/59.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">guessh who ovew owdewed</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/60.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob likesh da pizza!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/61.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">myanch!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/62.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">gomez gomez funeral?!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/63.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">filipno bwekky fow me today!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/64.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">scwambled eggsh fow woob woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/65.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">peawl necklace wabi haggled fow yestewday!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/66.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">i dyunno wat dish ish but ish pwetty!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/67.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my fiwsh stone bwacelet heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/68.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">heading out in hopesh of catching a naysh sunset!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/68.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">heading out in hopesh of catching a naysh sunset!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/69.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">walking along da beach wid da woob woob heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/71.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me takey pic of woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/70.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my tuwn!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/72.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">haiya nub sunset la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/73.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">but looksh wat we got!! all tenksh to woob's haggling skillsh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/74.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da wabi bwacelets!❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/75.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob cooked ush pancit da next mawnin wid egg spam and spicy corned beef! (which i fed snipew laytuw)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/76.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">headingsh out to beach hop!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/76.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">headingsh out to beach hop!! fiwsh stop wash lio beach!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/78.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">nacpan beach!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/79.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">waoww</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/80.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woobi and coconut!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/81.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">coconut ash big ash wabi's head la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/82.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and coconut!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/82(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sip sip second coconut!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/83.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob welaking</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/84.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sun setting!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/85.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shay chish woob woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/86.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my tuwn! silhouette of me!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/87.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob woob's silhouette </div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/88.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">when we went to pway in da waves and woob woob got bit by sumfing 😨</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/89.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunset!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/90.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi vwooming me bacc!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="el-nido/91.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">vwoom vwoom!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/92.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">inasal!! one of the besht ive eaten (pwobably bettew than mang inasal becosh hash soop and nawt dat oily)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="el-nido/93.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da gold flowew pendant got damaged 😭</div>
+        </div>
+    </div>
+    <p class = "second-caption">Thank you for giving me these two weeks my love.</p>    
+</section>
+
+<section id="bohol3" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <h1>Bohol!</h1>
+    <p class = "second-caption">da wabi's head bacc to bohol!</p>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="bohol3/2.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">jabbee at cebu!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woobi reunites with dunkin!!</div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="bohol3/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">diffewent pose!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sho happy laa</div>
+        </div>
+            <div class="gallery-item">
+            <img src="bohol3/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunset!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="bohol3/7.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">oh shiet hash fiwe</div>
+        </div>
+            <div class="gallery-item">
+            <img src="bohol3/8.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bacc in bohol!!</div>
+        </div>
+            <div class="gallery-item">
+            <img src="bohol3/9.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">watching da sunset at talisay!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="bohol3/10.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wahh looky at da skiesh</div>
+        </div>
+                <div class="gallery-item">
+            <img src="bohol3/11.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sun ish setting!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/12.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/14.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I will never get tired of watching the sunset with you</div>
+        </div>
+              <div class="gallery-item">
+            <img src="bohol3/1.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I love you so much babi</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/15.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">I hope we'll get to watch the sunset at talisay together again one day</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/15.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">we left during the good partt</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="bohol3/16(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">view from frank's fort!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">common crew taym!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie wabi</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/18.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my litol flowew woob</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/19.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wabi and triton!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/20.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">on da way to Anda!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/21.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">waoww looky at da sea laa</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/22.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">white sand beach!! (didnt go as expected but I was happy we made the best of it my love❤️)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/23.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bacc in panglao aftuw uneventful Anda!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/24.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I love you</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sho coot laa!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cheewsh! (tasted layk shiet!)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/27.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da bulgogi pasta wash SHOOO yummy</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">toni's!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/29.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob woob wid hew soopy noodlesh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/30.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shteak date nayt wid wabi!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/31.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and my beautiful baby❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/32.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">chacking in at bohol showesh!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">chish!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wahh big woom wid fluffy bedsh!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/35.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">watching tv wid woob!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/36.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">tv wid bawk stwab miwk and mango dessewt!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/37.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mawnin view wid pwivate pool!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/38.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">big swimming pool fow da nubsh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/39.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">samgyup!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/40.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">besht steamed egg evew!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/41.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Checking in at ocean suites!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/42.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wahh looky at da sunset laa</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/43.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunsets with you wiww nevew be bawring</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/44.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">timelapse! ( i wish i had dat timelapse u took on ur ipad😭)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/45.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">smoque dinnew wid da famiwy! (altho i didnt even eat much XD)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/46.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">looky at all da stawsh!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/47.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">pic wid da famiwy!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/48.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">fiwewowksh!!!! (unfowtunately my audio was connected to da twiton)</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/49.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">judas belt!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="bohol3/50.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">even longew judas belt!!! (dish wan wash ear rape fuak)</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/51.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">figaro befowe heading to da powt!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/52.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">iconic pictuwe spot fow da wabis</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/53.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">kish!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/54.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">studying while eating banh mi otw hawm</div>
+        </div>
+        <div class="gallery-item">
+            <img src="bohol3/55.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">bacc to weality 😭</div>
+        </div>
+    </div>    
+    <p class = "second-caption">Thank you na wabi, for this trip ❤️ I really enjoyed this trip with you so much. I love you my baby❤️</p> 
+
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+</section>
+
+<section id="sg13" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <p class = "second-caption">Da wabis reunite!</p>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="sg13/1.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">boughtsh and wrapped flowewsh fow wabi myshelf!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I ish excited to pwesent to da wabi!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob weceived! but wash sicc 🤧</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">fiwsh meal ishhhhh SATAY!!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg13/1.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">pokemon competition!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg13/2.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">woob woob getting fwustwateeeedddd</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="sg13/3.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">twying to altew da game laa!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">gotsh instant fud coma aftuw XD</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">space suittt!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/7.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sho happy la HAHAHAHA</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/8.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/9.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mandatowy flowew shniff yesh yesh</div>
+        </div>
+                <div class="gallery-item">
+            <img src="sg13/10.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">towigo!!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/11.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">myanch myanch myanch</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/12.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">dessewt!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob looky evil 😨</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/15.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">yong tau foo fow wabi becosh woob woob wanted sumfing soopy!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">claypot waysh!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mcd ayskwem aftuw!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="sg13/18.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my baby shweeping so soundly (wid da whole bed 😡)</div>
+        </div>
+    </div>   
+    <p class = "second-caption">Weady fow Hanoi?</p>
+
+    <button class="btn memory-btn" onclick="showMemoryDetailWithCustomBack('hanoi', 'initial-memory-lane')">Take us to Hanoi my love!</button>
+</section>
+
+<section id="hanoi" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <p class = "second-caption">Da wabis finawwy in Hanoi!! 🇻🇳</p>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="hanoi/0.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">wabi 1 awwived in hanoi! 🇻🇳</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/2 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Pizza 4Ps! it wash mid tho</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">taym to spit in pipol's fud</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob at Pizza 4Ps!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da famous building i alwaysh shee online</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/4 (3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">buying bwead fow da day!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/4 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">in da bush wid woobi!! otw to Ha Long bayyyy</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/6 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">in da bush wid woobi!! otw to Ha Long bayyyy</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="hanoi/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da zoom zoom speedboat!! we looky sho happy</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">your smile is wowth evewithing na</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/6.2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">reverse titanic!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob dipping hew legsh in watew!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7 (4).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my beautiful baby❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootiee!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7 (3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">dwying legsh la?</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/8.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">hawwo wabi!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/9.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">chish?</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/9 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wing wing!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/10.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunset taym!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/11.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob and mama</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/12.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">foggy ash sunset fwom da pollution la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/13(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">egg yolk!</div>
+        </div>
+
+
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/14.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">revealling da egg yolk sun!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/15.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/2 (3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob looksh sho pwetty</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">egg kopi!!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob on da twain twack!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/18.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shoo coooottt!!! I MYANCH U!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/19.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">switch sides!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/19.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">choo choo!! wash kind underwhelming XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/20.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cwushed beer cap! which da wabi took.</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/21 (3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mega gwand world!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/21 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">waoww gween riveww</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/21.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">"pose fow me wabi!"</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/22 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da wabi stawing into da kopi's soul</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/22.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie wid foam!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/24.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me asking woob woob to stand thewe fow pic</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">when i asked u to hit a pose XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/27.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">pose but wid a twist!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">ashky da woob to shmile heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">aww looky at dat smile on you na</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/29.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wowth mawr than a million dollawsh to me</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/30.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">kopi da next day!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/31.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">caught da choo choo again! at da cafe below dish taym XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/31.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob tooky pic of me!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/32.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">lotte world sky deck!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">no feaw la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wawming up fow sapa glass bwidge</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/36.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/37.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I love you wan wabi</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/38.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mawr wuv!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/39.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">waoww naow do a split!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/40.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">"huh?""</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/41.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">twying to meditate or sumfing i dyunno</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/42.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">our sleepew bus fow sapa!</div>
+        </div>
+    </div>
+    <p class = "second-caption">Ready fow sapa?</p> 
+    
+    <button class="btn memory-btn" onclick="showMemoryDetailWithCustomBack('sapa', 'initial-memory-lane')">Take us to SaPa!</button>
+</section>
+
+<section id="sapa" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <p class = "second-caption">Da wabis ventuwe on to SaPa!! 🇻🇳</p>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="hanoi/0.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">wabi 1 awwived in hanoi! 🇻🇳</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/2 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">Pizza 4Ps! it wash mid tho</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/2.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">taym to spit in pipol's fud</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/3.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob at Pizza 4Ps!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/4.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da famous building i alwaysh shee online</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/4(3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">buying bwead fow da day!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/4(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">in da bush wid woobi!! otw to Ha Long bayyyy</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/6(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">in da bush wid woobi!! otw to Ha Long bayyyy</div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="hanoi/6.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da zoom zoom speedboat!! we looky sho happy</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/5.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">your smile is wowth evewithing na</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da woob dipping hew legsh in watew!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7(4).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">my beautiful baby❤️</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootiee!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/7(3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">dwying legsh la?</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/8.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">hawwo wabi!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/9.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">chish?</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/10.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">sunset taym!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/11.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">woob woob and mama</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/12.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">foggy ash sunset fwom da pollution la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/13(2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/13.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">egg yolk!</div>
+        </div>
+
+
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/14.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">revealling da egg yolk sun!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/15.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="gallery-item">
+            <img src="hanoi/16.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">egg kopi!!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/17.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob on da twain twack!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/18.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">shoo coooottt!!! I MYANCH U!!</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/19.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">switch sides!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/19.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">choo choo!! wash kind underwhelming XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/20.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cwushed beer cap! which da wabi took.</div>
+        </div>
+                <div class="gallery-item">
+            <img src="hanoi/21 (3).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mega gwand world!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/21 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">waoww gween riveww</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/21.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">"pose fow me wabi!"</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/22 (2).jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">da wabi stawing into da kopi's soul</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/22.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">cootie wid foam!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/24.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me asking woob woob to stand thewe fow pic</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/25.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">when i asked u to hit a pose XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/27.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">pose but wid a twist!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/26.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">ashky da woob to shmile heheh</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/28.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">aww looky at dat smile on you na</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/29.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wowth mawr than a million dollawsh to me</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/30.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">kopi da next day!</div>
+        </div>
+        <div class="gallery-item">
+            <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                <source src="hanoi/31.mp4" type="video/mp4">
+            </video>
+            <div class="gallery-caption">caught da choo choo again! at da cafe below dish taym XD</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/32.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">lotte world sky deck!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/33.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">no feaw la</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/34.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">wawming up fow sapa glass bwidge</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/36.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">me and da woob!!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/37.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">I love you wan wabi</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/38.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">mawr wuv!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/39.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">waoww naow do a split!</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/40.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">"huh?""</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/41.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">twying to meditate or sumfing i dyunno</div>
+        </div>
+        <div class="gallery-item">
+            <img src="hanoi/42.jpg" alt="Description of photo" class="tall-image" style="width: 100%; border-radius: 10px;">
+            <div class="gallery-caption">our sleepew bus fow sapa!</div>
+        </div>
+    </div>
+    <p class = "second-caption">Let's go home my love?</p>  
+    
+    <button class="btn memory-btn" onclick="showMemoryDetailWithCustomBack('sg14', 'initial-memory-lane')">Take us to SaPa!</button>
+</section>
+
+<section id="sg14" class="memory-detail-page">
+    <button class="btn back-btn" onclick="goBackToMemoryLane()">Back to Memories</button>
+    <p class = "second-caption">We're home, my love</p>
+    
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="hanoi/0.jpg" alt="Description of photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            <div class="gallery-caption">wabi 1 awwived in hanoi! 🇻🇳</div>
+        </div>
+    </div>
+    <p class = "second-caption">Thank you my love, for everything.</p>  
+    
+</section>
+
     
     
     <!-- Memory Lane (before proposal) -->
@@ -2353,20 +4008,74 @@ function checkPassword() {
         <p>Four beautiful years of memories, growth, and love.</p>
         
         <div class="love-letter">
-            <p class="salutation">My dearest woobi,</p>
+            <p class="salutation">My dearest Therry,</p>
             
             <div class="letter-content">
-                As we reach our fourth anniversary, I wanted to take a moment to reflect on our journey together and everything we've shared. From our first meeting to this very moment, every second with you has been precious to me.
+Sorry if the formatting is messy,  I wrote each part whenever I couldn’t sleep, whenever thoughts of us filled my mind and typed it down :)
 
-                Looking back, I'm amazed by how far we've come and how much we've grown together. I remember when we first met - I was so nervous but felt instantly comfortable with you. That feeling has only grown stronger with time.
+I don’t even know where to begin, because my heart has been hurting and feeling so heavy that sometimes its hard to breathe. This pain in my chest, it spreads through every part of me, and I can’t control it. I really miss you. I miss us.
 
-                I cherish all of our adventures - from our first visit to Vietnam, our trips to Bohol, exploring Thailand, and all our other travels. Even the small moments like sharing meals, watching sunsets, and those quiet times just being together are treasures to me.
+Four years...has been a long time. But I still remember the first day we met, the first time we embraced each other... like it was yesterday. It wasn’t just a relationship to me, you were my home. You were my safe place, my best friend, my love, my weirdo, my partner in everything. You made my life feel brighter, funnier, softer and I always looked forward to a new day because you were in it.
 
-                Thank you for your patience, your understanding, and your love. Thank you for being my supporter, my confidant, and my best friend. Thank you for being you - for your smile that brightens my day, for your kindness that inspires me, and for your heart that loves me despite my flaws.
+I can still hear your voice, your laugh the way your touch made the world feel quiet and safe. I can still feel the way it felt to be close to you, like everything was gonna be okay as long as we were together and I wish to cling onto it forever, I don't want to forget how it feels like to be loved by you.
 
-                I've collected some of our most precious memories in this digital letter. These moments represent just a fraction of the joy, love and adventures we've shared together.
+I made this website initially to propose to you, but as things changed...I decided to convert it into a memory lane as a space to hold onto everything we shared and a letter that expresses emotions from the bottom of my heart. Finishing  it felt like reliving our whole relationship, replaying our moments, the good, the bad, the beautiful, the messy and they all feel so real, and it hurts. It really hurts. The trips we took, the inside jokes, the late-night talks, our movie nights, our gaming days, our pre-sleep wabi routine and even the arguments we had. I cherish it all, I really do.
 
-                Here's to many more years of creating memories, facing challenges, and growing together. I love you more than words can express, and I'm grateful every day that you chose me to share your life with.
+You were the first person I truly let in, the only one I could be completely myself with. I hope you remember the adventures, the chaos, the laughter, the ups and downs. Haggling prices in Vietnam, trying new foods, discovering little corners of the world together…
+
+Do you remember the ferry ride to bohol? When it turned into a roller coaster and we were laughing until you realized it was serious and froze in panic? You were so adorable, my cootie baby.
+
+Or that moment in Anda, where we saw that drunk guy with a bolo when we wanted to check in at rose's apartments and we were scared? And when we went to the beach and it was raining, you were so upset that everything was ruined :( but I tried to salvage it, and I'm happy that I did, Even though I got sick afterward, the smile on your face made it all worth it. Your happiness is worth more than anything in the world to me.
+
+Your happiness was everything.
+
+You made me feel seen, you made me like I was worthy of love just for existing and it was nothing like I have ever felt before. You've shown me what it means to truly love and be loved. You taught me how to slow down and appreciate life, how to see beauty in the little things, and how to love with my whole heart. And I love you more deeply than I ever thought I could love anyone, you taught me true love.
+
+You’ve helped me grow into a better person, more patient, more understanding, more open minded. I’ve learned so much about myself through you, and because of you. I learnt to be kinder because I wanted to be a good husband, a good father for the family I dreamed we’d have.
+
+And with that love came mistakes. And I need to say this clearly: I am truly sorry.
+
+I’m sorry for the times I let my flaws overshadow my love. I’m sorry for the words I didn’t say when you needed comfort, for the moments I didn’t show up the way you deserved. I never meant to cause you pain. If I could go back and fix the moments that hurt you, I would in a heartbeat, because you never deserved anything less than my full heart, my full presence, and my full love.
+
+I’m sorry for the ways I hurt you, through my actions, words, silence, in not being who you needed me to be in certain moments. I hope you understand that I never meant to make you feel alone, unseen, or unloved. I know I did sometimes. And I carry that with me. Please know it was never a reflection of how much I cared for you, because I did. I still do and I always will, more than I can say.
+
+My love, if I could go back and make it right, I would. I really would. I would hold you tighter. I would listen more. I would be more patient. I would love you the way you should be loved. I would fight harder, sooner. 
+
+I know I've hurt you, I know my actions can never be justified nor undone. I tried to save our relationship for the past half a year or so, and I thought... it finally worked, I had you back... just for everything to be shattered overnight over something that could've easily been fixed...all because I thought giving you space was the right move. But perhaps this is what you've been wanting all this time, and I was trying to save something that was already gone. But I stil enjoyed the past half-year with you, even through the tough times. I'm sorry that my efforts weren't enough to save us, for you to forgive me.
+
+I hope someday you can forgive me.
+
+And I hope you'll see the beauty in the moments we've shared together, good and bad... and cherish them, just as I have.
+
+I don’t know what the future holds for us or if “us” even exists anymore. I don't know how much longer I still have you for, even at our current state. It feels like everyday we're drifting further and further apart, even as I put in effort to try to salvage what we still have. Maybe we will gradually drift apart as you move on and no longer need me, so maybe this is goodbye, or maybe time will bring us together again.... I do not know. But I do know this, you mattered to me more than anything else in this world. You changed my life. And I’ll never forget that.
+
+If this were another anniversary spent side by side, I’d say, “Here’s to many more.” More memories, more laughter, more growth. But if this is the end, I’ll still carry you with me. Always.
+
+Little Wabi will carry all my love for you. I hope he can be there for you when you’re hurting. Please take care of him, okay?
+
+Whatever happens, I truly hope you find happiness. I hope you find peace. I hope you find the love you deserve and feel loved. Whether it's by someone else, or by the healing you've done within yourself. But please never settle for anyone that isn't able to love you the way you should be loved, always keep the bar high, you deserve that.
+
+Thank you babi. 
+For your patience.
+For forgiving me even when I didn’t deserve it.
+For your love even when things got hard.
+
+Thank you for being the light in my life, for your kindness, your warmth, and the way you loved me despite my imperfections.
+
+I’ve saved some of our most precious memories in this letter moments that represent just a small piece of the love we’ve shared. These moments meant the most to me, and are etched into my heart. I hope you remember us like that.
+
+And if we drift apart or lose contact, if memories start to fade...this website will always exist, so you can revisit what we once were, our memories together.
+
+You were my world. You brought joy, meaning, and a sense of home into my life that I never knew I needed until I met you.
+
+I’ll always be grateful for the time we shared, for the love we had, and for you, just as you are.
+
+If there ever comes a day that you need me, I'll be here and you know where to find me.
+
+Gihigugma tika my May.
+我爱你 My babi, my woobi, my wabi, my woob woob, my weirdo, my everything.
+
+I love you today, tomorrow, truly, deeply, and always.
             </div>
             
             <div class="heart-divider">❤️ ❤️ ❤️</div>
@@ -2375,52 +4084,48 @@ function checkPassword() {
             <div class="gallery">
                 <!-- These would be real images in your implementation -->
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ffcccb;">Image 1</div>
-                    <div class="gallery-caption">Our first meeting</div>
+                    <img src="sg1/first-taym.jpg" alt="First Date" class="photo">
+                    <div class="second-caption">Our first meeting</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ccffcc;">Image 2</div>
-                    <div class="gallery-caption">Trip to Vietnam</div>
+                    <img src="fav/22nd.jpg" alt="First Date" class="photo">
+                    <div class="gallery-caption">my love's 22nd birthday</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ccccff;">Image 3</div>
-                    <div class="gallery-caption">Exploring Thailand</div>
+                    <img src="fav/23rd.jpg" alt="First Date" class="photo">
+                    <div class="gallery-caption">my love's 23nd birthday</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ffffcc;">Image 4</div>
-                    <div class="gallery-caption">Bohol adventure</div>
+                    <img src="fav/feathew.jpg" alt="First Date" class="photo">
+                    <div class="gallery-caption">woob woob shweeping wid feathew</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ffccff;">Image 5</div>
-                    <div class="gallery-caption">Taylor Swift concert</div>
+                    <img src="fav/mylove(1).jpg" alt="First Date" class="photo">
+                    <div class="gallery-caption">one of my favourite of us</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ccffff;">Image 6</div>
-                    <div class="gallery-caption">Cozy day at home</div>
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="fav/kish.mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">da woobi giving me kishesh!!</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ffddbb;">Image 7</div>
-                    <div class="gallery-caption">Krabi adventure</div>
+                <video class="romantic-video" controls poster="images/video-thumbnail.jpg">
+                    <source src="fav/love(1).mp4" type="video/mp4">
+                </video>
+                <div class="gallery-caption">woob calling me wifey!! rawr!</div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background-color: #ddbbff;">Image 8</div>
-                    <div class="gallery-caption">Our favorite moments</div>
+                    <img src="fav/birthday.jpg" alt="First Date" class="photo">
+                    <div class="gallery-caption">woob myanching me even on bday cake</div>
                 </div>
             </div>
             
             <div class="heart-divider">❤️ ❤️ ❤️</div>
+
+            <p class="closing">I hope you find happiness, love, and peace in your life. You deserve it all.</p>
             
-            <div class="letter-content">
-                When I look at you, I see my whole world. You've brought so much joy, laughter, and love into my life, and I can't imagine my days without you. You're my partner in everything, my confidant, my best friend, and the love of my life.
-
-                As we celebrate another year together, I want you to know that my love for you has only grown deeper with time. Every moment we share - whether we're traveling the world, sharing a meal, or simply sitting in comfortable silence - is precious to me.
-
-                Thank you for being exactly who you are, for loving me completely, and for being the incredible person I get to call mine. You're everything I've ever dreamed of and more.
-
-                I love you today, tomorrow, and always.
-            </div>
-            
-            <p class="signature">Always yours,<br>Your lover</p>
+            <p class="signature">我爱你,<br>Jerome (家庆)</p>
         </div>
         
         <div class="heart" onclick="createRainbowHearts()">❤️</div>
