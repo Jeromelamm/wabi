@@ -7,14 +7,6 @@
         const backgroundMusic = document.getElementById('background-music');
         let isMusicPlaying = false;
         
-        // Quiz variables
-        let quizScore = 0;
-        const correctAnswers = {
-            1: 'b', // Ramen
-            2: 'b', // Under the stars
-            3: 'c'  // Photo album
-        };
-
         function setupVolumeControl() {
     // Create volume control container
     const volumeControl = document.createElement('div');
@@ -199,21 +191,43 @@
             window.scrollTo(0, 0);
         }
         
-        // Go back to memory lane
-        function goBackToMemoryLane() {
-            // Hide current section
-            document.getElementById(currentSection).classList.remove('active');
-            
-            // Show memory lane section
-            document.getElementById(previousMemorySection).classList.add('active');
-            
-            // Update current section
-            currentSection = previousMemorySection;
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
+    // Modify the goBackToMemoryLane function to optionally accept a specific destination
+    function goBackToMemoryLane(specificDestination) {
+    // Hide current section
+    document.getElementById(currentSection).classList.remove('active');
+    
+    // Show specified section or default to previously stored section
+    const destination = specificDestination || previousMemorySection;
+    document.getElementById(destination).classList.add('active');
+    
+    // Update current section
+    currentSection = destination;
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
         
+
+    // Let's add a function that will let us specify where the back button should take us
+    function showMemoryDetailWithCustomBack(memoryId, customBackSection) {
+    // Hide current section
+    document.getElementById(currentSection).classList.remove('active');
+    
+    // Set custom back destination
+    previousMemorySection = customBackSection || currentSection;
+    
+    // Show memory detail page
+    document.getElementById(memoryId).classList.add('active');
+    
+    // Update current section
+    currentSection = memoryId;
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+
+
         // Heart click effect
         function heartClickEffect(event) {
             // Remove highlight and speech bubble if present
@@ -453,6 +467,13 @@ document.addEventListener('DOMContentLoaded', function() {
         'sg9': 'August 2024',
         'bangkok': 'August 2024',
         'sg10': 'August 2024',
+        'sg12': 'December 2024',
+        'el-nido': 'January 2024',
+        'bohol3': 'January 2024',
+        'sg13': 'March 2024',
+        'hanoi': 'March 2024',
+        'sapa': 'March 2024',
+        'sg14': 'April 2024',
         
         // Additional memories in memory lane
         'first-kiss': 'Summer 2022',
