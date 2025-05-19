@@ -445,6 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'sg9': 'August 2024',
         'bangkok': 'August 2024',
         'sg10': 'August 2024',
+        'sg11': 'October 2024',
         'sg12': 'December 2024',
         'el-nido': 'January 2024',
         'bohol3': 'January 2024',
