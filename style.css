@@ -101,6 +101,21 @@ p {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.glow-button {
+            animation: glow 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 10px var(--primary);
+        }
+        
+@keyframes glow {
+            from {
+                box-shadow: 0 0 10px var(--primary);
+            }
+            to {
+                box-shadow: 0 0 20px var(--primary), 0 0 30px var(--secondary);
+            }
+        }
+
+
 .btn::after {
     content: '';
     position: absolute;
@@ -452,14 +467,19 @@ transform: translateY(-3px);
 .memory-item:nth-child(11) { animation-delay: 2.1s; } 
 .memory-item:nth-child(12) { animation-delay: 2.3s; } 
 .memory-item:nth-child(13) { animation-delay: 2.5s; } 
-.memory-item:nth-child(14) { animation-delay: 2.7s; } 
-.memory-item:nth-child(15) { animation-delay: 2.9s; } 
-.memory-item:nth-child(16) { animation-delay: 3.1s; } 
-.memory-item:nth-child(17) { animation-delay: 3.3s; } 
-.memory-item:nth-child(18) { animation-delay: 3.5s; } 
-.memory-item:nth-child(19) { animation-delay: 3.7s; } 
-.memory-item:nth-child(20) { animation-delay: 3.9s; } 
-.memory-item:nth-child(21) { animation-delay: 4.1s; } 
+.memory-item:nth-child(14) { animation-delay: 2.5s; } 
+.memory-item:nth-child(15) { animation-delay: 2.5s; } 
+.memory-item:nth-child(16) { animation-delay: 2.5s; } 
+.memory-item:nth-child(17) { animation-delay: 2.5s; } 
+.memory-item:nth-child(18) { animation-delay: 2.5s; } 
+.memory-item:nth-child(19) { animation-delay: 2.5s; } 
+.memory-item:nth-child(20) { animation-delay: 2.5s; } 
+.memory-item:nth-child(21) { animation-delay: 2.5s; } 
+.memory-item:nth-child(22) { animation-delay: 2.5s; } 
+.memory-item:nth-child(23) { animation-delay: 2.5s; } 
+.memory-item:nth-child(24) { animation-delay: 2.5s; } 
+.memory-item:nth-child(25) { animation-delay: 2.5s; } 
+.memory-item:nth-child(26) { animation-delay: 2.5s; } 
 
 .hidden {
     display: none;
@@ -611,32 +631,6 @@ transform: translateY(-3px);
     display: none;
 }
 
-/* Audio player for background music */
-.audio-control {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 100;
-    transition: all 0.3s ease;
-}
-
-.audio-control:hover {
-    transform: scale(1.1);
-}
-
-.audio-icon {
-    color: white;
-    font-size: 1.2rem;
-}
 
 /* Loading animation */
 .loading-screen {
@@ -843,16 +837,7 @@ text-align: center;
     transition: color 0.5s ease;
 }
 
-.volume-control {
-position: fixed;
-background-color: rgba(255, 255, 255, 0.9);
-padding: 10px;
-border-radius: 10px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-z-index: 99;
-}
 
-/* Add these styles to your existing CSS */
 
 /* Year Selection Page */
 .year-collages {
@@ -1375,33 +1360,6 @@ color: var(--dark);
             }
         }
 
-        /* Audio player for background music */
-        .audio-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-
-        .audio-control:hover {
-            transform: scale(1.1);
-        }
-
-        .audio-icon {
-            color: white;
-            font-size: 1.2rem;
-        }
-
         /* Final love letter styling */
         .love-letter {
             max-width: 800px;
@@ -1457,6 +1415,553 @@ color: var(--dark);
             font-size: 2rem;
             margin: 1.5rem 0;
         }
+
+/* Enhanced Music Player and Volume Controls Styling */
+
+.music-player {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 280px; /* Slightly smaller to match your screenshot */
+  background: #FDFD96; /* Match the yellow background color */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  z-index: 1000;
+  overflow: hidden;
+  display: none;
+  border: 2px solid #ff6b6b;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateY(-50%) translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50%) translateX(100%);
+    opacity: 0;
+  }
+}
+
+.player-header {
+  padding: 15px;
+  background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.3rem;
+}
+
+.player-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.player-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.close-player {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-player:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.now-playing {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.album-art {
+  width: 80px;  /* Increase from 70px to 80px */
+  height: 80px; /* Increase from 70px to 80px */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ff6b6b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Comic Neue', cursive;
+  color: #ff6b6b;
+  background-color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  position: relative; /* Added for absolute positioning of child elements */
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+
+.song-progress {
+  width: 100%;
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #ff6b6b, #ff9d9d);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.player-controls {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #FDFD96; /* Match the yellow background */
+}
+
+.control-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: #ff6b6b;
+}
+
+.control-btn:hover {
+  background-color: rgba(255, 107, 107, 0.1);
+  transform: scale(1.1);
+}
+
+.control-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.play-btn {
+  background-color: #ff6b6b;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+}
+
+.play-btn:hover {
+  background-color: #ff5252;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Volume control container styles */
+.volume-control-container {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.2);
+  background-color: #FDFD96; /* Match the yellow background color */
+}
+
+.volume-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-icon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  color: #ff6b6b;
+  transition: all 0.2s ease;
+}
+
+.volume-icon:hover {
+  color: #ff5252;
+  transform: scale(1.1);
+}
+
+.volume-icon.muted {
+  color: #aaa;
+}
+
+.volume-icon.muted path.volume-wave {
+  display: none;
+}
+
+.volume-slider-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.volume-slider {
+  width: 100%;
+  height: 6px;
+
+  border-radius: 3px;
+  outline: none;
+  /* Remove fixed gradient background */
+  background: #e0e0e0;
+  /* Add a pseudo-element for the filled part */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Creating the fill effect with a pseudo-element */
+.volume-slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--volume-percent, 70%);
+  height: 100%;
+  background: linear-gradient(to right, #ff6b6b, #ff9d9d);
+  border-radius: 3px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #ff6b6b;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #ff6b6b;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(255, 107, 107, 0.3);
+  transition: all 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+}
+
+.volume-level {
+  font-size: 0.8rem;
+  color: #ff6b6b;
+  text-align: right;
+  font-weight: bold;
+  font-family: 'Comic Neue', cursive;
+}
+
+/* Update playlist section to accommodate volume control */
+.playlist-section {
+  max-height: 150px; /* Make it slightly smaller to fit all components */
+  overflow-y: auto;
+  padding-top: 5px;
+}
+
+/* We need to make sure it's displayed only after the volume container */
+.volume-control-container + .playlist-section {
+  border-top: none;
+}
+
+.playlist-section {
+  max-height: 150px; /* Made slightly smaller to accommodate volume at bottom */
+  overflow-y: auto;
+  background-color: #FDFD96; /* Match the yellow background */
+  border-bottom: 1px solid rgba(255, 107, 107, 0.3); /* Added border to separate from volume */
+  /* Make sure playlist doesn't cover volume */
+  padding-bottom: 5px;
+}
+
+.playlist-header {
+  padding: 8px 15px; /* Slimmer header */
+  color: #ff6b6b;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.3);
+  background-color: #FDFD96; /* Match the yellow background */
+  margin-top: 0; /* Remove any default margin */
+}
+
+.songs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.song-item {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 107, 107, 0.1);
+}
+
+.song-item:hover {
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.song-item.active {
+  background-color: rgba(255, 107, 107, 0.15);
+  border-left: 4px solid #ff6b6b;
+}
+
+.song-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.song-number {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(255, 107, 107, 0.2);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.song-item.active .song-number {
+  background-color: var(--primary);
+  color: white;
+}
+
+.playlist-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.1rem;
+}
+
+.song-duration {
+  font-size: 0.8rem;
+  color: var(--primary);
+  position: relative;
+  padding-left: 18px;
+}
+
+.song-duration::before {
+  content: '❤️';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+}
+
+/* Updated audio control button to match anniversary website theme */
+.audio-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Position to bottom right instead of left */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background: none;
+  box-shadow: none;
+}
+
+.audio-heart {
+  font-size: 3rem;
+  filter: drop-shadow(0 5px 15px rgba(255, 107, 107, 0.5));
+  transition: all 0.3s ease;
+}
+
+.audio-control:hover .audio-heart {
+  transform: scale(1.2);
+}
+
+.audio-heart.beating {
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+.audio-tooltip {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  font-family: 'Comic Neue', cursive;
+}
+
+.audio-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: var(--primary) transparent transparent transparent;
+}
+
+.audio-control:hover .audio-tooltip {
+  opacity: 1;
+}
+
+.song-item:last-child {
+  border-bottom: none; /* Remove bottom border from last song to avoid double borders */
+}
+
+/* Make scrollbar more visible */
+.playlist-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playlist-section::-webkit-scrollbar-track {
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 10px;
+}
+
+.playlist-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 107, 0.3);
+  border-radius: 10px;
+}
+
+.playlist-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 107, 0.5);
+}
+
+@media (max-width: 768px) {
+  .music-player {
+    width: 300px;
+    max-height: 80vh;
+    right: 10px;
+  }
+  
+  .album-art {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .player-controls {
+    gap: 15px;
+  }
+  
+  .control-btn {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .play-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
 
 @media (max-width: 1024px) {
     .gallery-item {
