@@ -700,40 +700,138 @@ function updateInitialNavigation() {
 }
 
 
- // Check password function
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('error-message');
+ // Check password function with direct song selection and album art update
+function checkPassword() {
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('error-message');
+    
+    // Check if password is correct (matching 18/08/2021)
+    if (password === '18/08/2021' || password === '18/8/2021') {
+        // Show the special message section
+        document.getElementById('special-section').classList.remove('active');
+        document.getElementById('special-message').classList.add('active');
+        
+        // Update current section
+        previousSection = currentSection;
+        currentSection = 'special-message';
+        
+        // Create celebratory confetti
+        createConfetti();
+        
+        // Play specifically CAS - Opera House
+        const backgroundMusic = document.getElementById('background-music');
+        if (backgroundMusic) {
+            // Set the source directly to Opera House
+            backgroundMusic.src = "Opera House.mp3"; // Make sure this matches the actual file path
             
-            // Check if password is correct (matching 18/08/2021)
-            if (password === '18/08/2021' || password === '18/8/2021') {
-                // Show the special message section
-                document.getElementById('special-section').classList.remove('active');
-                document.getElementById('special-message').classList.add('active');
+            // Play the music
+            backgroundMusic.play().then(() => {
+                // Update the audio control icon if needed
+                const audioIcon = document.querySelector('.audio-icon');
+                if (audioIcon) audioIcon.innerHTML = '♫';
                 
-                // Update current section
-                previousSection = currentSection;
-                currentSection = 'special-message';
+                // Flag that music is playing
+                window.isMusicPlaying = true;
                 
-                // Create celebratory confetti
-                createConfetti();
+                // Add any heart animation class if it exists
+                const audioHeart = document.querySelector('.audio-heart');
+                if (audioHeart) audioHeart.classList.add('beating');
                 
-                // Play music
-                if (!isMusicPlaying) {
-                    toggleAudio();
+                // Update tooltip if it exists
+                const audioTooltip = document.querySelector('.audio-tooltip');
+                if (audioTooltip) audioTooltip.textContent = 'Pause Our Song';
+            }).catch(error => {
+                console.error("Error playing music:", error);
+            });
+            
+            // Try to update music player UI if it exists
+            try {
+                // Update song title display if it exists
+                const songTitle = document.querySelector('.song-title');
+                if (songTitle) songTitle.textContent = "CAS - Opera House";
+                
+                // Update album art
+                const albumImg = document.querySelector('.album-cover-img');
+                const albumFallback = document.querySelector('.album-fallback');
+                
+                if (albumImg) {
+                    // Set src to CAS album art
+                    albumImg.src = 'covers/CAS.jpg'; // Make sure this path is correct
+                    albumImg.style.display = 'block';
+                    
+                    // Handle image loading errors
+                    albumImg.onerror = function() {
+                        albumImg.style.display = 'none';
+                        if (albumFallback) albumFallback.style.display = 'flex';
+                        console.log(`Failed to load album art for CAS - Opera House`);
+                    };
+                    
+                    // Hide fallback if it exists
+                    if (albumFallback) albumFallback.style.display = 'none';
                 }
-            } else {
-                // Show error message
-                errorMessage.style.display = 'block';
                 
-                // Shake the form to indicate error
-                const form = document.querySelector('.special-message-box');
-                form.style.animation = 'none';
-                setTimeout(() => {
-                    form.style.animation = 'shake 0.5s';
-                }, 10);
+                // Update active song in playlist if it exists
+                const songItems = document.querySelectorAll('.song-item');
+                if (songItems && songItems.length > 0) {
+                    songItems.forEach((item, i) => {
+                        if (i === 1) { // Index 1 is CAS - Opera House
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Reset progress bar if it exists
+                const progressFill = document.querySelector('.progress-fill');
+                if (progressFill) progressFill.style.width = '0%';
+                
+                // Update time displays if they exist
+                const currentTimeDisplay = document.querySelector('.current-time');
+                if (currentTimeDisplay) currentTimeDisplay.textContent = '0:00';
+                
+                const totalTimeDisplay = document.querySelector('.total-time');
+                if (totalTimeDisplay) totalTimeDisplay.textContent = '6:05'; // Duration of Opera House
+                
+                // Update play/pause button icons if they exist
+                const playIcon = document.querySelector('.play-icon');
+                const pauseIcon = document.querySelector('.pause-icon');
+                if (playIcon && pauseIcon) {
+                    playIcon.classList.add('hidden');
+                    pauseIcon.classList.remove('hidden');
+                }
+                
+                // Update current song index if it's a global variable
+                if (typeof window.currentSongIndex !== 'undefined') {
+                    window.currentSongIndex = 1;
+                }
+                
+                // If we have direct access to the loadSong function, use it as a backup
+                if (typeof window.loadSong === 'function') {
+                    try {
+                        window.loadSong(1); // Try to load song at index 1 (CAS - Opera House)
+                    } catch (loadErr) {
+                        console.log("Could not use loadSong function:", loadErr);
+                        // We've already handled UI updates manually, so this is just a backup
+                    }
+                }
+            } catch (err) {
+                console.log("Non-critical UI update error:", err);
+                // Continue even if UI updates fail
             }
         }
+    } else {
+        // Show error message
+        errorMessage.style.display = 'block';
+        
+        // Shake the form to indicate error
+        const form = document.querySelector('.special-message-box');
+        form.style.animation = 'none';
+        setTimeout(() => {
+            form.style.animation = 'shake 0.5s';
+        }, 10);
+    }
+}
         
         // Add shake animation for incorrect password
         document.head.insertAdjacentHTML('beforeend', `
