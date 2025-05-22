@@ -854,10 +854,22 @@ const playlist = [
         duration: "3:48"
     },
     { 
+        title: "Sofia Mills - Coffee Breath",
+        src: "coffee-breath.mp3",
+        cover: "covers/coffee-breath.png",
+        duration: "3:48"
+    },
+    { 
         title: "CAS - Opera House",
         src: "Opera House.mp3",
         cover: "covers/CAS.jpg",
         duration: "6:05" 
+    },
+    { 
+        title: "Ruth B. - Dandelions",
+        src: "Ruth B. - Dandelions (Lyrics).mp3",
+        cover: "covers/dandelions.jpg",
+        duration: "3:48"
     },
     { 
         title: "Christina Perri - A Thousand Years",
@@ -875,6 +887,12 @@ const playlist = [
         title: "beabadoobee - Glue Song ft. Clairo",
         src: "glue-song.mp3",
         cover: "covers/glue-song.jpg",
+        duration: "2:17"
+    },
+    { 
+        title: "Sombr - Back to friends",
+        src: "back-to-friends.mp3",
+        cover: "covers/BTF.jpg",
         duration: "2:17"
     }
 ];
