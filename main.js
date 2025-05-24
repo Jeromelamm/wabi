@@ -1,13 +1,15 @@
-        // Main JavaScript file for the interactive love story experience
-        // Track current section for navigation
-        let currentSection = 'landing';
-        let previousMemorySection = 'initial-memory-lane';
+// Main JavaScript file for the interactive love story experience
+// Track current section for navigation
+let currentSection = 'landing';
+let previousMemorySection = 'initial-memory-lane';
         
-        // Audio elements
-        const backgroundMusic = document.getElementById('background-music');
-        let isMusicPlaying = false;
+// Audio elements
+const backgroundMusic = document.getElementById('background-music');
+let isMusicPlaying = false;
+let playerContainer = null;
+let songItems = null;
         
-        function setupVolumeControl() {
+function setupVolumeControl() {
     // Create volume control container
     const volumeControl = document.createElement('div');
     volumeControl.className = 'volume-control';
@@ -190,6 +192,14 @@
             // Scroll to top
             window.scrollTo(0, 0);
         }
+
+function showMemoryDetailWithCustomBack(memoryId, backDestination) {
+    // Simple version - just use the existing showMemoryDetail logic
+    showMemoryDetail(memoryId);
+    
+    // Override the back destination
+    previousMemorySection = backDestination;
+}
         
         // Go back to memory lane
         function goBackToMemoryLane() {
@@ -306,11 +316,16 @@
         }
         
         // Play sound effects
-        function playButtonSound() {
-            const audio = new Audio('https://assets.codepen.io/4358584/click1.mp3');
-            audio.volume = soundEffectVolume * 0.6; // Even quieter for button clicks
-            audio.play().catch(e => console.log("Button sound prevented:", e));
-        }
+        // Make sure playButtonSound is properly defined
+function playButtonSound() {
+    try {
+        const audio = new Audio('https://assets.codepen.io/4358584/click1.mp3');
+        audio.volume = (window.soundEffectVolume || 0.7) * 0.6;
+        audio.play().catch(e => console.log("Button sound prevented:", e));
+    } catch (e) {
+        console.log("Could not play button sound:", e);
+    }
+}
 
         function playHeartbeatSound() {
             const audio = new Audio('https://assets.codepen.io/4358584/heartbeat.mp3');
@@ -370,57 +385,6 @@
             document.getElementById('image-modal').style.display = 'none';
         }
         
-        // Quiz functionality
-        function checkAnswer(questionNum, answer) {
-            const feedbackElement = document.getElementById(`feedback-${questionNum}`);
-            feedbackElement.classList.remove('hidden');
-            
-            if (answer === correctAnswers[questionNum]) {
-                feedbackElement.textContent = 'Correct! 💕';
-                feedbackElement.style.color = 'green';
-                quizScore++;
-            } else {
-                feedbackElement.textContent = 'Not quite... the correct answer is highlighted 💜';
-                feedbackElement.style.color = 'red';
-            }
-            
-            // Highlight correct answer
-            const options = document.querySelectorAll(`#question-${questionNum} .quiz-option`);
-            options.forEach(option => {
-                option.disabled = true;
-                if (option.textContent.toLowerCase().charAt(0) === correctAnswers[questionNum]) {
-                    option.style.backgroundColor = 'rgba(78, 205, 196, 0.7)';
-                    option.style.fontWeight = 'bold';
-                }
-            });
-            
-            // Move to next question or show results
-            setTimeout(() => {
-                if (questionNum < 3) {
-                    document.getElementById(`question-${questionNum}`).classList.add('hidden');
-                    document.getElementById(`question-${questionNum + 1}`).classList.remove('hidden');
-                } else {
-                    // Show results
-                    document.querySelectorAll('.quiz-question').forEach(q => q.classList.add('hidden'));
-                    const resultsElement = document.getElementById('quiz-results');
-                    resultsElement.classList.remove('hidden');
-                    
-                    document.getElementById('score-display').textContent = `Your score: ${quizScore}/3`;
-                    
-                    const messageElement = document.getElementById('score-message');
-                    if (quizScore === 3) {
-                        messageElement.textContent = 'Perfect score! You know me so well! ❤️';
-                        messageElement.style.color = 'green';
-                    } else if (quizScore >= 1) {
-                        messageElement.textContent = 'Not bad! There\'s always more to learn about each other! 💕';
-                        messageElement.style.color = 'orange';
-                    } else {
-                        messageElement.textContent = 'That\'s okay! Let\'s keep creating memories together! 💜';
-                        messageElement.style.color = 'purple';
-                    }
-                }
-            }, 1500);
-        }
 
         // Function to add date bubbles to all memories
 document.addEventListener('DOMContentLoaded', function() {
@@ -857,7 +821,7 @@ const playlist = [
         title: "Sofia Mills - Coffee Breath",
         src: "coffee-breath.mp3",
         cover: "covers/coffee-breath.png",
-        duration: "3:48"
+        duration: "2:42"
     },
     { 
         title: "CAS - Opera House",
@@ -866,9 +830,9 @@ const playlist = [
         duration: "6:05" 
     },
     { 
-        title: "Ruth B. - Dandelions",
-        src: "Ruth B. - Dandelions (Lyrics).mp3",
-        cover: "covers/dandelions.jpg",
+        title: "The Marias - No one noticed",
+        src: "no-one-noticed.mp3",
+        cover: "covers/no-one-noticed.jpg",
         duration: "3:48"
     },
     { 
@@ -892,8 +856,8 @@ const playlist = [
     { 
         title: "Sombr - Back to friends",
         src: "back-to-friends.mp3",
-        cover: "covers/BTF.jpg",
-        duration: "2:17"
+        cover: "covers/BTF.jpeg",
+        duration: "3:18"
     }
 ];
 
@@ -908,7 +872,7 @@ function createMusicPlayer() {
     playerContainer.className = 'music-player';
     playerContainer.innerHTML = `
         <div class="player-header">
-            <span class="player-title">Our Music ❤️</span>
+            <span class="player-title">Songs that are dedicated to you ❤️</span>
             <button class="close-player">×</button>
         </div>
         <div class="now-playing">
@@ -990,14 +954,15 @@ function createMusicPlayer() {
 
 // Initialize the player and set up event listeners
 function initMusicPlayer() {
-    const { playerContainer, audioToggle } = createMusicPlayer();
+    const { playerContainer: container, audioToggle } = createMusicPlayer();
+    playerContainer = container; // Store globally
     const backgroundMusic = document.getElementById('background-music');
     const progressFill = playerContainer.querySelector('.progress-fill');
     const currentTimeDisplay = playerContainer.querySelector('.current-time');
     const totalTimeDisplay = playerContainer.querySelector('.total-time');
     const volumeSlider = playerContainer.querySelector('#volume-slider');
     const volumeLevel = playerContainer.querySelector('.volume-level');
-    const songItems = playerContainer.querySelectorAll('.song-item');
+    songItems = playerContainer.querySelectorAll('.song-item'); // Store globally
     const volumeIcon = playerContainer.querySelector('.volume-icon');
     
     // Set initial state
@@ -1012,7 +977,7 @@ function initMusicPlayer() {
         }, 300);
     });
     
-    // Toggle player visibility
+// Toggle player visibility
     audioToggle.addEventListener('click', () => {
         isPlayerVisible = !isPlayerVisible;
         
@@ -1033,7 +998,7 @@ function initMusicPlayer() {
         toggleAudio();
     });
     
-    // Function to toggle audio playing state
+// Function to toggle audio playing state
     function toggleAudio() {
         if (isMusicPlaying) {
             backgroundMusic.pause();
@@ -1063,7 +1028,7 @@ function initMusicPlayer() {
         loadSong(currentSongIndex);
     });
     
-    // Song progress
+// Song progress
     backgroundMusic.addEventListener('timeupdate', () => {
         const currentTime = backgroundMusic.currentTime;
         const duration = backgroundMusic.duration || 1;
@@ -1078,7 +1043,7 @@ function initMusicPlayer() {
         }
     });
     
-    // Click on progress bar to seek
+// Click on progress bar to seek
     playerContainer.querySelector('.progress-bar').addEventListener('click', (e) => {
         const progressBar = e.currentTarget;
         const clickPosition = e.offsetX;
@@ -1090,7 +1055,7 @@ function initMusicPlayer() {
         }
     });
     
-    // Volume control
+ // Volume control
     volumeSlider.addEventListener('input', function() {
         const volumeValue = this.value / 100;
         backgroundMusic.volume = volumeValue;
@@ -1106,7 +1071,7 @@ function initMusicPlayer() {
         updateVolumeIcon(volumeValue);
     });
     
-    // Set initial volume slider filled portion
+ // Set initial volume slider filled portion
     volumeSlider.style.setProperty('--volume-percent', `${volumeSlider.value}%`);
     
     // Volume icon click to toggle mute
@@ -1137,10 +1102,6 @@ function initMusicPlayer() {
             if (index !== currentSongIndex) {
                 currentSongIndex = index;
                 loadSong(currentSongIndex);
-                
-                // Update active class
-                songItems.forEach(song => song.classList.remove('active'));
-                item.classList.add('active');
             }
         });
     });
@@ -1148,7 +1109,7 @@ function initMusicPlayer() {
     // Initial song load
     loadSong(currentSongIndex);
     
-    // Function to update volume icon based on volume level
+ // Function to update volume icon based on volume level
     function updateVolumeIcon(volume) {
         const volumeWaves = volumeIcon.querySelectorAll('.volume-wave');
         
@@ -1173,12 +1134,32 @@ function initMusicPlayer() {
     
     // Set initial volume icon state
     updateVolumeIcon(backgroundMusic.volume);
+
+    // Format time in MM:SS
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Return the control elements for further customization if needed
+    return {
+        playerContainer,
+        audioToggle,
+        backgroundMusic,
+        volumeSlider
+    };
+
     
-    // Function to load a song by index
-    function loadSong(index) {
-        const song = playlist[index];
-        
-        backgroundMusic.src = song.src;
+// Updated loadSong function - now it can access the global songItems
+function loadSong(index) {
+    const song = playlist[index];
+    const backgroundMusic = document.getElementById('background-music');
+    
+    backgroundMusic.src = song.src;
+    
+    // Update song title if player exists
+    if (playerContainer) {
         playerContainer.querySelector('.song-title').textContent = song.title;
         
         // Update album art
@@ -1188,59 +1169,62 @@ function initMusicPlayer() {
         if (song.cover) {
             albumImg.src = song.cover;
             albumImg.style.display = 'block';
-            albumFallback.style.display = 'none';
+            if (albumFallback) albumFallback.style.display = 'none';
             
             // Handle image loading errors
             albumImg.onerror = function() {
                 albumImg.style.display = 'none';
-                albumFallback.style.display = 'flex';
+                if (albumFallback) albumFallback.style.display = 'flex';
                 console.log(`Failed to load album art for: ${song.title}`);
             };
         } else {
             albumImg.style.display = 'none';
-            albumFallback.style.display = 'flex';
+            if (albumFallback) albumFallback.style.display = 'flex';
         }
         
-        // Update active song in playlist
-        songItems.forEach((item, i) => {
-        if (i === index) {
-        item.classList.add('active');
-        } else {
-        item.classList.remove('active');
+        // Update active song in playlist - THIS IS THE KEY FIX
+        if (songItems && songItems.length > 0) {
+            songItems.forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
         }
-        });
         
         // Reset progress
-        progressFill.style.width = '0%';
-        currentTimeDisplay.textContent = '0:00';
+        const progressFill = playerContainer.querySelector('.progress-fill');
+        const currentTimeDisplay = playerContainer.querySelector('.current-time');
+        const totalTimeDisplay = playerContainer.querySelector('.total-time');
+        
+        if (progressFill) progressFill.style.width = '0%';
+        if (currentTimeDisplay) currentTimeDisplay.textContent = '0:00';
         
         // Update total time display
-        if (song.duration) {
+        if (song.duration && totalTimeDisplay) {
             totalTimeDisplay.textContent = song.duration;
         }
+        
+        // Update play/pause button icons
+        const playIcon = playerContainer.querySelector('.play-icon');
+        const pauseIcon = playerContainer.querySelector('.pause-icon');
         
         // If music was playing, start the new song
         if (isMusicPlaying) {
             backgroundMusic.play();
-            playIcon.classList.add('hidden');
-            pauseIcon.classList.remove('hidden');
+            if (playIcon && pauseIcon) {
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            }
         }
     }
-    
-    // Format time in MM:SS
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
-    
-    // Return the control elements for further customization if needed
-    return {
-        playerContainer,
-        audioToggle,
-        backgroundMusic,
-        volumeSlider
-    };
+}
+
+
+
+// Make loadSong globally accessible
+window.loadSong = loadSong;
 }
 
 // Call this function after the DOM has loaded
