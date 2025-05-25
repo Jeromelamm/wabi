@@ -818,46 +818,16 @@ const playlist = [
         duration: "3:48"
     },
     { 
-        title: "Sofia Mills - Coffee Breath",
-        src: "coffee-breath.mp3",
-        cover: "covers/coffee-breath.png",
-        duration: "2:42"
-    },
-    { 
         title: "CAS - Opera House",
         src: "Opera House.mp3",
         cover: "covers/CAS.jpg",
         duration: "6:05" 
     },
     { 
-        title: "The Marias - No one noticed",
-        src: "no-one-noticed.mp3",
-        cover: "covers/no-one-noticed.jpg",
-        duration: "3:48"
-    },
-    { 
-        title: "Christina Perri - A Thousand Years",
-        src: "a-thousand-years.mp3",
-        cover: "covers/thousand-years.jpg",
-        duration: "4:46"
-    },
-    { 
-        title: "John Legend - All of Me",
-        src: "all-of-me.mp3",
-        cover: "covers/all-of-me.jpg",
-        duration: "4:30"
-    },
-    { 
         title: "beabadoobee - Glue Song ft. Clairo",
         src: "glue-song.mp3",
         cover: "covers/glue-song.jpg",
         duration: "2:17"
-    },
-    { 
-        title: "Sombr - Back to friends",
-        src: "back-to-friends.mp3",
-        cover: "covers/BTF.jpeg",
-        duration: "3:18"
     }
 ];
 
